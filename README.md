@@ -21,4 +21,14 @@ I configure a secure IAM foundation for small businesses on AWS — users, group
 
 ---
 
+## Third-Party Content
+
+This repository may include screenshots, trademarks, logos, product names, service names, or other materials from Amazon Web Services (AWS) and other third-party platforms.
+
+Such materials remain the property of their respective owners and are included solely for educational, documentation, and professional portfolio purposes.
+
+The MIT License applies only to the original content created for this repository and does not grant rights to third-party intellectual property.
+
+---
+
 ### Hexterika Cyberlab — operated by Sangsongthong Chantaranothai
