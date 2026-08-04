@@ -64,8 +64,8 @@ The templates are published in Markdown so their structure can be reviewed direc
 
 The client documentation package represented by this repository consists of:
 
-+ `AWS-IAM-Foundation-Configuration-Report-[ClientName].pdf`
-+ `AWS-IAM-Foundation-Handover-Guide-[ClientName].pdf`
++ `aws-iam-foundation-configuration-report-template-clientName.md`
++ `aws-iam-foundation-handover-guide-template-clientName.md`
 
 The Configuration Report documents what was configured and verified.
 
