@@ -38,27 +38,45 @@ Additional sample work can be added as the AWS IAM foundation lab develops.
 
 ## Deliverable Templates
 
-The deliverables/ directory contains the public Markdown templates used to structure client documentation.
+The `deliverables/` directory contains public Markdown templates showing the documents prepared for AWS IAM Foundation clients.
 
-`aws-iam-foundation-configuration-report-template-ClientName.md`
+### `aws-iam-foundation-configuration-report-template-ClientName.md`
 
-The AWS IAM Foundation Configuration Report template records the environment-specific IAM foundation configured and verified during an engagement.
+The **AWS IAM Foundation Configuration Report** explains what was configured in the client’s AWS account.
 
-It provides a structured place to document:
+It may document:
 
-+ The resulting IAM access structure
-+ Security configurations and verification results
-+ Billing-alert confirmation
-+ Relevant environment-specific notes
++ IAM users, groups, and roles created
++ Permissions assigned
++ Security settings configured
++ Root MFA verification
++ Billing alerts configured
++ Security checks completed
 + Confirmation that temporary access was removed
 
-`aws-iam-foundation-handover-guide-template-ClientName.md`
+In simple terms:
 
-The `AWS IAM Foundation Handover Guide template` provides a plain-language reference for the client after delivery.
+> “Here is what Hexterika Cyberlab configured and verified in your AWS account.”
 
-It explains the configured access structure and provides guidance for safely managing users and access after handover.
+### `aws-iam-foundation-handover-guide-template-ClientName.md`
 
-The templates are published in Markdown so their structure can be reviewed directly on GitHub. Completed client versions are customized for the client’s environment and converted to PDF before delivery.
+The **AWS IAM Foundation Handover Guide** explains how the client can continue using the IAM foundation safely after the work is complete.
+
+It may explain:
+
++ How to add a new user
++ Which group a user should be added to
++ How to remove a user who no longer needs access
++ How to check whether MFA is enabled
++ How to avoid unnecessary root-account use
++ How to handle access keys safely
++ What should not be changed without reviewing the permissions first
+
+In simple terms:
+
+> “Here is how to continue using the IAM foundation safely after handover.”
+
+The templates are published in Markdown so they can be reviewed directly on GitHub. Completed client versions are customized for the client’s AWS environment and converted to PDF before delivery.
 
 ## Client Deliverables
 
