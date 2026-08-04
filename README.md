@@ -14,8 +14,8 @@ AWS-IAM-Security/
 ├── README.md
 ├── LICENSE
 ├── deliverables/
-│   ├── aws-iam-foundation-configuration-report-template-clientName.md
-│   └── aws-iam-foundation-handover-guide-template-clientName.md
+│   ├── aws-iam-foundation-configuration-report-template-ClientName.md
+│   └── aws-iam-foundation-handover-guide-template-ClientName.md
 └── sample-work/
     └── 00-account-setup/
         ├── 00-account-setup.md
@@ -40,7 +40,7 @@ Additional sample work can be added as the AWS IAM foundation lab develops.
 
 The deliverables/ directory contains the public Markdown templates used to structure client documentation.
 
-`aws-iam-foundation-configuration-report-template.md`
+`aws-iam-foundation-configuration-report-template-ClientName.md`
 
 The AWS IAM Foundation Configuration Report template records the environment-specific IAM foundation configured and verified during an engagement.
 
@@ -52,7 +52,7 @@ It provides a structured place to document:
 + Relevant environment-specific notes
 + Confirmation that temporary access was removed
 
-`aws-iam-foundation-handover-guide-template.md`
+`aws-iam-foundation-handover-guide-template-ClientName.md`
 
 The `AWS IAM Foundation Handover Guide template` provides a plain-language reference for the client after delivery.
 
@@ -64,12 +64,14 @@ The templates are published in Markdown so their structure can be reviewed direc
 
 The client documentation package represented by this repository consists of:
 
-+ `aws-iam-foundation-configuration-report-template-clientName.md`
-+ `aws-iam-foundation-handover-guide-template-clientName.md`
++ `aws-iam-foundation-configuration-report-template-ClientName.md`
++ `aws-iam-foundation-handover-guide-template-ClientName.md`
 
 The Configuration Report documents what was configured and verified.
 
-The Handover Guide helps the client understand and safely maintain the IAM foundation after the engagement.
+The Handover Guide explains the IAM foundation configured during the engagement and provides client-specific instructions for maintaining that structure after delivery, including how to add or remove users within the established access model.
+
+Its guidance is limited to the IAM foundation covered by this service and is not intended to serve as a comprehensive AWS security manual.
 
 The public Markdown files show the reusable document structures. Completed client documents contain environment-specific information and are delivered privately.
 
