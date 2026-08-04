@@ -23,11 +23,17 @@ I configure a secure IAM foundation for small businesses on AWS — users, group
 
 ## Third-Party Content
 
-This repository may include screenshots, trademarks, logos, product names, service names, or other materials from Amazon Web Services (AWS) and other third-party platforms.
+Sample work in this repository may include screenshots, interface elements, product names, trademarks, logos, or other materials belonging to Amazon Web Services or other third parties.
 
-Such materials remain the property of their respective owners and are included solely for educational, documentation, and professional portfolio purposes.
+Such materials remain the property of their respective owners and are included solely for educational, technical-documentation, service-demonstration, and portfolio purposes.
 
-The MIT License applies only to the original content created for this repository and does not grant rights to third-party intellectual property.
+The MIT License applies only to original content created for this repository and does not grant rights to third-party intellectual property.
+
+## License
+
+This repository is licensed under the MIT License. See LICENSE for the full license text.
+
+Client-specific documents, confidential information, credentials, and completed client deliverables are not included under this public repository license.
 
 ---
 
