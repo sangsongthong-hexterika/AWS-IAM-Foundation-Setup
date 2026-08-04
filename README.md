@@ -31,9 +31,9 @@ The MIT License applies only to original content created for this repository and
 
 ## License
 
-This repository is licensed under the MIT License. See LICENSE for the full license text.
+This repository is licensed under the MIT License. See [`LICENSE`](LICENSE) for the full license text.
 
-Client-specific documents, confidential information, credentials, and completed client deliverables are not included under this public repository license.
+Client-specific reports and confidential client information are not part of this public repository.
 
 ---
 
