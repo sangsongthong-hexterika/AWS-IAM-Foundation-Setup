@@ -10,7 +10,7 @@ Prospective clients can review the documentation structure associated with the s
 ## Repository Structure
 
 ```text
-AWS-IAM-Security/
+AWS-IAM-Foundation-Setup/
 ├── README.md
 ├── LICENSE
 ├── deliverables/
