@@ -2,8 +2,8 @@
 
 This repository supports two parallel goals:
 
-**Hexterika Cyberlab:** Present the deliverable templates and technical sample work supporting the AWS IAM Foundation Setup service.
-**Cloud security portfolio:** Demonstrate hands-on AWS account security, IAM configuration, least-privilege reasoning, security verification, technical documentation, and client handover.
++ **Hexterika Cyberlab:** Present the deliverable templates and technical sample work supporting the AWS IAM Foundation Setup service.
++ **Cloud security portfolio:** Demonstrate hands-on AWS account security, IAM configuration, least-privilege reasoning, security verification, technical documentation, and client handover.
 
 Prospective clients can review the documentation structure associated with the service. Recruiters and technical reviewers can examine the sample work as evidence of the underlying technical capability.
 
@@ -82,16 +82,16 @@ The templates are published in Markdown so they can be reviewed directly on GitH
 
 The client documentation package represented by this repository consists of:
 
-+ `aws-iam-foundation-configuration-report-template-ClientName.pdf`
-+ `aws-iam-foundation-handover-guide-template-ClientName.pdf`
++ `AWS-IAM-Foundation-Configuration-Report-[ClientName].pdf`
++ `AWS-IAM-Foundation-Handover-Guide-[ClientName].pdf`
 
-The Configuration Report documents what was configured and verified.
+The **Configuration Report** explains what Hexterika Cyberlab configured and verified in the client’s AWS account.
 
-The Handover Guide explains the IAM foundation configured during the engagement and provides client-specific instructions for maintaining that structure after delivery, including how to add or remove users within the established access model.
+The **Handover Guide** explains how the client can continue using the IAM foundation safely after delivery, including how to add or remove users within the established access model.
 
-Its guidance is limited to the IAM foundation covered by this service and is not intended to serve as a comprehensive AWS security manual.
+The guide is limited to the IAM foundation covered by this service. It is not a comprehensive AWS security manual.
 
-The public Markdown files show the reusable document structures. Completed client documents contain environment-specific information and are delivered privately.
+The public Markdown files show the reusable document structures. Completed client documents contain environment-specific information, are converted to PDF, and are delivered privately.
 
 ## Repository Scope
 
