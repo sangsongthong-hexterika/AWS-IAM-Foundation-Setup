@@ -14,8 +14,8 @@ AWS-IAM-Security/
 ├── README.md
 ├── LICENSE
 ├── deliverables/
-│   ├── aws-iam-foundation-configuration-report-template.md
-│   └── aws-iam-foundation-handover-guide-template.md
+│   ├── aws-iam-foundation-configuration-report-template-clientName.md
+│   └── aws-iam-foundation-handover-guide-template-clientName.md
 └── sample-work/
     └── 00-account-setup/
         ├── 00-account-setup.md
