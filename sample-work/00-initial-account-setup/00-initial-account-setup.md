@@ -1,4 +1,4 @@
-# Walkthrough 00 — Day 0: AWS Account Sign-Up
+# Walkthrough 00 — Initial AWS Account Setup
 
 ## Objective
 
@@ -20,7 +20,7 @@ As you can see, I blurred my email for security reason, but I leave my brand "He
 
 Take a look at the below screenshot so you know which page I have been talking about.
 
-![sign-up_page](day0_images/aws-iam-lab-sign-up-page.png)
+![sign-up_page](./images/aws-iam-lab-sign-up-page.png)
 
 After verifying the email, I am facing with the create password here. On this page, you will be creating the password of the root user account in this step.
 
@@ -28,11 +28,11 @@ For someone who has no idea what is root user account, why not John Doe account,
 
 As shown in the screenshot below, AWS told me that my email address has been successfully verified. Then, I can move to the next step, creating root user password and then click "Continue (step 1 of 5)".
 
-![set-root-user-password](day0_images/aws-iam-lab-set-root-user-password.png)
+![set-root-user-password](./images/aws-iam-lab-set-root-user-password.png)
 
 Now I am facing the sign up page. There are two plans, free and paid. Of course I am going to start with the free plan and upgrade later. However, before that, let's scroll down and take a look at the addtional details.
 
-![plan-page-selection-page-choose-free-plan](day0_images/aws-iam-lab-plan-selection-page-choose-free-plan.png)
+![plan-page-selection-page-choose-free-plan](./images/aws-iam-lab-plan-selection-page-choose-free-plan.png)
 
 The additional details contains limitation of the free account plan. This is the new update that I really like. The last time I had trouble with controlling the payment due to me being an inexperience and had to pay for it.
 
@@ -42,37 +42,37 @@ In this setup guide of mine, I am aiming to make sure that I setup my billing co
 
 You can take a look at the editional details in the screenshot below. This screenshot was taken at the time I am writing this walkthrough which is a snapshot in time of what AWS currently offers. I cannot predict their future changes in offer or policies.
 
-![plan-page-selection-page-additional-detail](day0_images/aws-iam-lab-plan-selection-page-additional-detail.png)
+![plan-page-selection-page-additional-detail](./images/aws-iam-lab-plan-selection-page-additional-detail.png)
 
-![plan-do-not-forget-to-click-agree-to-the-terms-of-use](day0_images/aws-iam-lab-plan-do-not-forget-to-click-agree-to-the-terms-of-use.png)
+![plan-do-not-forget-to-click-agree-to-the-terms-of-use](./images/aws-iam-lab-plan-do-not-forget-to-click-agree-to-the-terms-of-use.png)
 
 Looking at the contact information, there are two types, personal and business. I select both one at a time to see the differences. As you can see from the two images below, the only different is that the business has an additional field called "Organization Name".
 
-![contact-info-page-select-personal](day0_images/aws-iam-lab-plan-contact-info-page-select-personal.png)
+![contact-info-page-select-personal](./images/aws-iam-lab-plan-contact-info-page-select-personal.png)
 
-![contact-info-page-select-business](day0_images/aws-iam-lab-plan-contact-info-page-select-business.png)
+![contact-info-page-select-business](./images/aws-iam-lab-plan-contact-info-page-select-business.png)
 
 Now, I choose business because my goal is to set it up for my own business brand, Hexterika Cyberlab. Here you can see that I am start filling into the form with my business name "Hexterika Cyberlab".
 
 Also, I need to use my real legal name here because it will be my billing address.
 
-![plan-fill-in-contact-info-with-my-TH-num1](day0_images/aws-iam-lab-plan-fill-in-contact-info-with-my-TH-num1.png)
+![plan-fill-in-contact-info-with-my-TH-num1](./images/aws-iam-lab-plan-fill-in-contact-info-with-my-TH-num1.png)
 
 Next, I setup my billing info. Be aware that I need to use my real card. Enter payment method (use low-limit credit/debit if possible).
 
-![billing-info-1](day0_images/aws-iam-lab-billing-info-1.png)
+![billing-info-1](./images/aws-iam-lab-billing-info-1.png)
 
 Then, clicked verify and continue to step 3 of 5.
 
-![billing-info-2](day0_images/aws-iam-lab-billing-info-2.png)
+![billing-info-2](./images/aws-iam-lab-billing-info-2.png)
 
 Now verify my identity, I just need to fill in my phone number and pick the verification method.
 
-![identity-verification-setup-choose-text-or-call](day0_images/aws-iam-lab-identity-verification-setup-choose-text-or-call.png)
+![identity-verification-setup-choose-text-or-call](./images/aws-iam-lab-identity-verification-setup-choose-text-or-call.png)
 
 After I am done with the verification process, I am greeted with the below screenshot. This is the sign-up confirmation.
 
-![4-out-of-5-steps-account-setup-done](day0_images/aws-iam-lab-4-out-of-5-steps-account-setup-done.png)
+![4-out-of-5-steps-account-setup-done](./images/aws-iam-lab-4-out-of-5-steps-account-setup-done.png)
 
 ---
 
@@ -87,7 +87,7 @@ has MFA, and the root user has no active access keys. (No long-lived keys on
 root is the other thing you want true from day one — root shouldn't have keys
 at all.)
 
-![MFA_Root_Account_Set](day0_images/aws-root-mfa-setup-success-v1.png)
+![MFA_Root_Account_Set](./images/aws-root-mfa-setup-success-v1.png)
 
 Then I logged out and logged back in to confirm the MFA actually works. Note
 that signing out of root means signing back in with the **root email** — that
