@@ -30,7 +30,7 @@ The sample work documents technical implementation, security decisions, verifica
 
 The current sample begins here:
 
-`00-account-setup/00-account-setup.md` — Documents the creation and initial preparation of a clean AWS account, including root-account protection and early security decisions.
+`00-account-setup/00-account-setup.md` — Documents the initial account-owner preparation completed before temporary administrator access is provided, including AWS account creation, root-account protection, and early security decisions.
 
 This directory is the primary starting point for recruiters and technical reviewers. Prospective clients may also review it to see the technical work supporting the service.
 
@@ -82,8 +82,8 @@ The templates are published in Markdown so they can be reviewed directly on GitH
 
 The client documentation package represented by this repository consists of:
 
-+ `aws-iam-foundation-configuration-report-template-ClientName.md`
-+ `aws-iam-foundation-handover-guide-template-ClientName.md`
++ `aws-iam-foundation-configuration-report-template-ClientName.pdf`
++ `aws-iam-foundation-handover-guide-template-ClientName.pdf`
 
 The Configuration Report documents what was configured and verified.
 
