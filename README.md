@@ -82,12 +82,21 @@ The templates are published in Markdown so they can be reviewed directly on GitH
 
 The client documentation package represented by this repository consists of:
 
-+ `AWS-IAM-Foundation-Configuration-Report-[ClientName].pdf`
-+ `AWS-IAM-Foundation-Handover-Guide-[ClientName].pdf`
++ `AWS-IAM-Foundation-Configuration-Report-ClientName.pdf`
++ `AWS-IAM-Foundation-Handover-Guide-ClientName.pdf`
 
 The **Configuration Report** explains what Hexterika Cyberlab configured and verified in the client’s AWS account.
 
 The **Handover Guide** explains how the client can continue using the IAM foundation safely after delivery, including how to add or remove users within the established access model.
+
+**Filename convention:** `ClientName` is an intentional placeholder and must be replaced with the actual client name before a completed document is delivered.
+
+<!--
+Naming convention: Keep `ClientName` exactly as written in template filenames.
+Do not add square brackets or change it to `client-name`.
+This convention is intentional for clear placeholder recognition and consistent
+file handling across Linux, Windows, Android, and iOS.
+-->
 
 The guide is limited to the IAM foundation covered by this service. It is not a comprehensive AWS security manual.
 
