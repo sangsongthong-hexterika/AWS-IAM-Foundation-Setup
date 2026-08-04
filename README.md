@@ -1,23 +1,83 @@
-# AWS IAM Security — Hexterika Cyberlab
+# AWS IAM Foundation Setup
 
-This repository supports the **AWS IAM Foundation Setup** service offered by Hexterika Cyberlab.
+This repository supports two parallel goals:
 
-It contains:
+**Hexterika Cyberlab:** Present the deliverable templates and technical sample work supporting the AWS IAM Foundation Setup service.
+**Cloud security portfolio:** Demonstrate hands-on AWS account security, IAM configuration, least-privilege reasoning, security verification, technical documentation, and client handover.
 
-+ Walkthrough documentation from real hands-on lab work
-+ Deliverable templates used in client engagements
-+ Internal workflow checklist for setup sessions
+Prospective clients can review the documentation structure associated with the service. Recruiters and technical reviewers can examine the sample work as evidence of the underlying technical capability.
 
-## Service: AWS IAM Foundation Setup
+## Repository Structure
 
-I configure a secure IAM foundation for small businesses on AWS — users, groups, roles, MFA, billing isolation, and password policy — following AWS best practices.
+```text
+AWS-IAM-Security/
+├── README.md
+├── LICENSE
+├── deliverables/
+│   ├── aws-iam-foundation-configuration-report-template.md
+│   └── aws-iam-foundation-handover-guide-template.md
+└── sample-work/
+    └── 00-account-setup/
+        ├── 00-account-setup.md
+        └── images/
+```
 
-**[View the full service details -- Domain Coming Soon!>](YOUR_NEW_HC_DOMAIN_HERE)**
+## Start Here: Sample Work
+
+The sample-work/ directory contains hands-on work completed in authorized AWS lab environments.
+
+The sample work documents technical implementation, security decisions, verification, and supporting evidence rather than presenting only finished templates.
+
+The current sample begins here:
+
+`00-account-setup/00-account-setup.md` — Documents the creation and initial preparation of a clean AWS account, including root-account protection and early security decisions.
+
+This directory is the primary starting point for recruiters and technical reviewers. Prospective clients may also review it to see the technical work supporting the service.
+
+Additional sample work can be added as the AWS IAM foundation lab develops.
 
 ## Deliverable Templates
 
-+ `AWS_IAM_Configuration_Report_clientName.md` — Configuration report delivered to client post-setup
-+ `AWS_IAM_Setup_Guide_clientName.md` — Client-facing guide for managing IAM after handoff
+The deliverables/ directory contains the public Markdown templates used to structure client documentation.
+
+`aws-iam-foundation-configuration-report-template.md`
+
+The AWS IAM Foundation Configuration Report template records the environment-specific IAM foundation configured and verified during an engagement.
+
+It provides a structured place to document:
+
++ The resulting IAM access structure
++ Security configurations and verification results
++ Billing-alert confirmation
++ Relevant environment-specific notes
++ Confirmation that temporary access was removed
+
+`aws-iam-foundation-handover-guide-template.md`
+
+The `AWS IAM Foundation Handover Guide template` provides a plain-language reference for the client after delivery.
+
+It explains the configured access structure and provides guidance for safely managing users and access after handover.
+
+The templates are published in Markdown so their structure can be reviewed directly on GitHub. Completed client versions are customized for the client’s environment and converted to PDF before delivery.
+
+## Client Deliverables
+
+The client documentation package represented by this repository consists of:
+
++ `AWS-IAM-Foundation-Configuration-Report-[ClientName].pdf`
++ `AWS-IAM-Foundation-Handover-Guide-[ClientName].pdf`
+
+The Configuration Report documents what was configured and verified.
+
+The Handover Guide helps the client understand and safely maintain the IAM foundation after the engagement.
+
+The public Markdown files show the reusable document structures. Completed client documents contain environment-specific information and are delivered privately.
+
+## Repository Scope
+
+The Hexterika Cyberlab website explains the client-facing AWS IAM Foundation Setup service. This repository provides the corresponding technical evidence, sample work, and deliverable structures.
+
+The repository is limited to material supporting the AWS IAM Foundation Setup service. Any broader AWS service or later service tier should be documented separately.
 
 ---
 
