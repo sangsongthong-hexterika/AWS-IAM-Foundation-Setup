@@ -17,8 +17,8 @@ AWS-IAM-Security/
 │   ├── aws-iam-foundation-configuration-report-template-ClientName.md
 │   └── aws-iam-foundation-handover-guide-template-ClientName.md
 └── sample-work/
-    └── 00-account-setup/
-        ├── 00-account-setup.md
+    └── 00-initial-account-setup/
+        ├── 00-initial-account-setup.md/
         └── images/
 ```
 
@@ -30,7 +30,7 @@ The sample work documents technical implementation, security decisions, verifica
 
 The current sample begins here:
 
-`00-account-setup/00-account-setup.md` — Documents the initial account-owner preparation completed before temporary administrator access is provided, including AWS account creation, root-account protection, and early security decisions.
+`00-initial-account-setup/00-initial-account-setup.md` — Documents the initial account-owner preparation completed before temporary administrator access is provided, including AWS account creation, root-account protection, and early security decisions.
 
 This directory is the primary starting point for recruiters and technical reviewers. Prospective clients may also review it to see the technical work supporting the service.
 
