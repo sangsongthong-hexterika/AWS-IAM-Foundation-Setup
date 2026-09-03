@@ -76,7 +76,7 @@ The permissions I assigned to this groups are:
 
 #### hexterika-auditors
 
-This grants the permission to the auditors to check for compliances to uphold the standard of the sensitive medical data information such as people who check if the hospital comply to HIPPA or not or the penetration tester or the vulnerability assessment people.
+This grants the permission to the auditors to check for compliances to uphold the standard of the sensitive medical data information such as people who check if the hospital comply to HIPAA or not or the penetration tester or the vulnerability assessment people.
 
 The permissions I assigned to this groups are:
 
@@ -85,6 +85,10 @@ The permissions I assigned to this groups are:
 In this labs, all the databases will be set to its simplest form that can be written directly by typing.
 
 This is a fictional hospital that I set the IAM permission based on the idea above. This does not mean a real world hospital will follow this exact pattern but it shows my understanding that each organization has their own unique structure and requirements.
+
+## Disclaimer
+
+This is a fictional AWS IAM lab designed to demonstrate identity and access management concepts such as least privilege, role-based access control, and separation of duties in a healthcare-inspired environment. While some security and privacy concepts are inspired by HIPAA, this lab is not intended to implement, demonstrate, or claim HIPAA compliance. The organizational structure, resources, permissions, workflows, and data used in this lab are simplified and fictional for educational purposes.
 
 ## Note To Self
 
