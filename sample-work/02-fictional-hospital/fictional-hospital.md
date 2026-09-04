@@ -106,12 +106,72 @@ Patient registration being responsible for creating records and maintaining accu
 ### hexterika-him-verifiers
 
 Full name: Hexterika Hospital Health Information Management Record Verifiers
-Investigate suspected duplicates, compare identity evidence, and approve or reject a proposed merge. Cannot execute it.
 
-### hexterika-him-mergers
+hexterika-him-verifiers grants selected hospital personnel permission to investigate suspected duplicate patient profiles and approve or reject proposed record merges. Members of this group verify that the profiles represent the same person and specify which internal patient record must remain as the surviving record. They cannot execute merges.
+
+#### Permitted actions HIM Verifier
+
+| Action | Scope and restrictions |
+| --- | --- |
+| View suspected duplicate profiles | View the administrative identity information of profiles submitted for duplicate review. |
+| Compare internal patient IDs | Compare the immutable hospital-generated identifiers belonging to the suspected duplicate profiles. |
+| Review identity evidence | Compare names, aliases, dates of birth, addresses, contact information, national IDs, passport information, and other approved identity evidence. |
+| View limited record metadata | Confirm that clinical records exist and compare relevant encounter dates or record history without modifying or unnecessarily reading clinical contents. |
+| Request additional verification | Return an inconclusive case to registration staff or request assistance from authorized clinical personnel when identity cannot be safely confirmed. |
+| Reject a proposed merge | Reject the request when the available evidence is insufficient, contradictory, or indicates that the profiles represent different people. |
+| Approve a proposed merge | Record approval when sufficient evidence shows that the profiles represent the same patient. |
+| Select the surviving record | Identify which internal patient record must remain active and which duplicate must be merged into it. |
+| Submit an approved merge request | Send the approved record pair and merge direction to an authorized HIM merger operator. |
+
+Prohibited actions
+Action	Reason
+Execute a record merge	Verification and execution must be performed by different authorized people.
+Approve and execute the same merge	This would remove the two-person control.
+Modify clinical information	Diagnoses, treatments, results, and prescriptions remain controlled by the relevant clinical groups.
+Independently correct patient demographics	Corrections belong to patient-registration staff unless they form part of an authorized merge outcome.
+Change an internal patient ID	Internal patient IDs are immutable system identifiers.
+Delete a patient record	Record deletion is outside the duplicate-verification function.
+Approve a merge without sufficient evidence	An incorrect merge could combine the clinical histories of different people.
+Alter audit records	Verification decisions and related activity must remain traceable.
+
+hexterika-him-mergers
 
 Full name: Hexterika Hospital Health Information Management Record Merger Operators
-Execute a previously verified merge. Cannot independently approve their own proposed merge.
+
+hexterika-him-mergers grants selected hospital personnel permission to execute a duplicate-record merge that has already been verified and approved by an authorized HIM verifier. Members of this group cannot independently approve a merge or change the approved merge direction.
+
+Permitted actions
+Action	Scope and restrictions
+View approved merge requests	View the approval, the two internal patient IDs, the selected surviving record, and the identity of the verifier.
+Validate the merge request	Confirm that the request is complete, approved, and refers to the exact records selected by the verifier.
+Return an invalid request	Reject or return a request that is incomplete, inconsistent, expired, or not approved by an authorized verifier.
+Execute an approved merge	Merge the specified duplicate record into the specified surviving record.
+Preserve the surviving internal patient ID	Ensure that the approved surviving record retains its original immutable internal patient ID.
+Preserve record history	Ensure that the merge retains the required history and traceability of the former duplicate record.
+Record the merge result	Produce an auditable record showing who executed the merge, when it occurred, which records were involved, and which record survived.
+Prohibited actions
+Action	Reason
+Create or approve a merge request	Approval belongs to the separate HIM verifier group.
+Execute an unapproved merge	Every merge requires prior approval from an authorized verifier.
+Change the approved record pair	The operator may only merge the records named in the approval.
+Reverse the approved merge direction	The verifier determines which record survives.
+Substitute another surviving record	This would execute a different action from the one that was reviewed.
+Modify patient demographics or clinical contents	The operator’s permission is limited to executing the approved merge.
+Delete an unrelated patient record	Merge authority does not provide general record-deletion authority.
+Alter or remove audit records	Merge activity must remain traceable.
+Separation-of-duties rule
+
+A person must not simultaneously belong to both hexterika-him-verifiers and hexterika-him-mergers. Registration staff may report suspected duplicates but cannot approve or execute merges.
+
+The workflow requires two different authorized people:
+
+A patient-registration worker reports a suspected duplicate.
+An HIM verifier investigates the records and either rejects or approves the merge.
+The verifier specifies the surviving record and submits the approved request.
+A different HIM merger operator validates the approval and executes the specified merge.
+The verification and execution activities are retained in the audit history.
+
+This two-user structure is based on Indian Health Service guidance recommending that one user perform identification and verification while another user performs the actual merge because the merge may be irreversible. IHS Patient Merge Policy
 
 ### hexterika-doctors
 
