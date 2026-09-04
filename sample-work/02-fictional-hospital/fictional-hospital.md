@@ -100,7 +100,7 @@ Patient registration being responsible for creating records and maintaining accu
 | View prescriptions or medication records | Outside the group’s administrative purpose. |
 | Create or modify clinical information | Reserved for the relevant clinical groups. |
 | Change record-retention status | Reserved for authorized records-management or compliance staff. |
-| Declare a patient deceased | This is a clinical determination, although registration staff might later update permitted administrative fields based on an authorized record.|
+| Declare a patient deceased | This is a clinical determination, although registration staff might later update permitted administrative fields based on an authorized record. |
 | Use fingerprints or dental records to make an independent clinical identity determination | They may flag or submit the evidence, but specialized verification belongs to authorized HIM or clinical personnel. |
 
 ### hexterika-patients-med-records
