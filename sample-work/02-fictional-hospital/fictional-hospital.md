@@ -103,13 +103,17 @@ Patient registration being responsible for creating records and maintaining accu
 | Declare a patient deceased | This is a clinical determination, although registration staff might later update permitted administrative fields based on an authorized record. |
 | Use fingerprints or dental records to make an independent clinical identity determination | They may flag or submit the evidence, but specialized verification belongs to authorized HIM or clinical personnel. |
 
-### hexterika-patients-med-records
+### hexterika-him-verifiers
 
-This grants access to create a patient record in the database for the database staff, but since they are not a doctor or a nurse, they cannot write any diagnosis to the patient.
+Full name: Hexterika Hospital Health Information Management Record Verifiers
+Investigate suspected duplicates, compare identity evidence, and approve or reject a proposed merge. Cannot execute it.
 
-The permissions I assigned to this groups are:
+### hexterika-him-mergers
 
-#### hexterika-doctors
+Full name: Hexterika Hospital Health Information Management Record Merger Operators
+Execute a previously verified merge. Cannot independently approve their own proposed merge.
+
+### hexterika-doctors
 
 This grants access to the doctors to add their diagnostic to each patient in the database. This is different from the nurses group because a nurse may allow to write down their check-up information but not diagnose the patient the same level as a doctor can do. This prevents the conflict of duties problem as well as safeguarding the patient that only a license medical doctor is allowed to write the diagnosis to a patient and not just anyone who works at the hospital can write everything on the patient.
 
