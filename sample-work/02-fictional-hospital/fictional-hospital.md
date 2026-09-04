@@ -22,17 +22,88 @@ This lab use a hospital as a base to set AWS IAM permission to demonstrate that 
 + Security
 + Compliance / audit
 
+### Important distinctions
+
+#### Administrative profile
+
+Internal patient ID
+Name and known aliases
+Date of birth
+Address
+Telephone number
+Emergency contact
+Nationality or citizenship information
+Passport or national ID information
+Identified/unidentified status
+
+#### Clinical record
+
+Diagnoses
+Medical history
+Doctors’ notes
+Nursing observations and treatments
+Laboratory results
+Radiology results
+Prescriptions and medication administration
+
+Registration staff can access the first category, not the second. This follows the minimum-necessary principle: workforce access should be based on the information needed to perform the person’s job. (HHS guidance)
+
+#### Unidentified-patient workflow
+
+1. Registration staff search for a possible existing record.
+2. If identity cannot be established, they create an unidentified patient profile.
+3. The system assigns an immutable internal patient ID.
+4. Clinical staff document treatment against that record.
+5. Registration staff later add verified demographic and identity information.
+6. If no previous profile exists, the same record continues as the permanent identified record.
+7. If a previous profile exists, registration staff flag the records as a possible duplicate.
+8. Registration staff cannot merge them.
+9. Authorized HIM staff verify the match, and a different authorized HIM worker executes the merge.
+10. Retention rule for this lab
+
+Patient-registration staff have no deletion permission. Hexterika Hospital retains patient records under a separate retention policy, including records of deceased patients. The proposed “10+ years” should remain a fictional internal assumption until the lab selects a jurisdiction, because real retention periods vary by record type and governing law.
+
 ## My IAM Setup
 
-### Groups And Their Definition
+### hexterika-patient-registration
 
-#### hexterika-staff
+hexterika-patient-registration grants authorized non-clinical staff access to create patient profiles and view or modify patient identity, demographic, and contact information. The group may create temporary profiles for unidentified patients and report suspected duplicate records. It cannot access clinical information, change internal patient identifiers, delete records, verify duplicates, or merge patient records.
 
-This grants access to staff personal data database resources so they can modify some of their personal data.
+#### Permitted actions
 
-The permissions I assigned to this groups are:
+| Action | Scope and restrictions |
+| --- | --- |
+| Search for an existing patient | Search identity and demographic information before creating another record. |
+| View administrative information | View patient name, date of birth, contact information, address, recorded identity documents, and internal patient ID. |
+| Create an identified patient profile | Create a record when sufficient identity information is available. |
+| Create an unidentified patient profile | Create an emergency record using an assigned placeholder identity when the patient cannot be identified. Real hospital policies use assigned naming formats and medical-record numbers for this situation. (Nova Scotia Health policy) |
+| Update demographic information | Correct or update names, addresses, telephone numbers, emergency contacts, and similar non-clinical information. |
+| Add identity evidence | Add a subsequently obtained passport number, citizenship ID, or other approved identity evidence. |
+| Identify an unknown patient | Replace placeholder demographic information after the patient’s identity has been adequately verified. |
+| Report possible duplicates | Flag two records that may represent the same person and send them to authorized HIM staff. |
+| Read the internal patient ID | Use the hospital-generated identifier to locate and distinguish records. |
 
-#### hexterika-patients-med-records
+Patient registration being responsible for creating records and maintaining accurate patient details reflects actual medical-reception and registration work. (NHS receptionist example)
+
+#### Prohibited actions
+
+| Action | Reason |
+| --- | --- |
+| Change the internal patient ID | The hospital-generated identifier remains the stable reference for the record. |
+| Delete a patient profile | Retention and eventual disposal are records-management functions, not registration duties. |
+| Merge duplicate records | A false merge could combine two people’s clinical histories and may be irreversible. |
+| Approve their own suspected duplicate | The HIM verification process must remain independent. |
+| View diagnoses | Not required for patient registration. |
+| View doctors’ clinical notes | Outside the group’s administrative purpose. |
+| View nursing treatment records | Outside the group’s administrative purpose. |
+| View laboratory results | Outside the group’s administrative purpose. |
+| View prescriptions or medication records | Outside the group’s administrative purpose. |
+| Create or modify clinical information | Reserved for the relevant clinical groups. |
+| Change record-retention status | Reserved for authorized records-management or compliance staff. |
+| Declare a patient deceased | This is a clinical determination, although registration staff might later update permitted administrative fields based on an authorized record.|
+| Use fingerprints or dental records to make an independent clinical identity determination | They may flag or submit the evidence, but specialized verification belongs to authorized HIM or clinical personnel. |
+
+### hexterika-patients-med-records
 
 This grants access to create a patient record in the database for the database staff, but since they are not a doctor or a nurse, they cannot write any diagnosis to the patient.
 
