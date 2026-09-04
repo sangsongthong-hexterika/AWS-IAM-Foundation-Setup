@@ -1,4 +1,4 @@
-# Fictional Hospital
+# Fictional Hospital (Old)
 
 This lab use a hospital as a base to set AWS IAM permission to demonstrate that a hospital is different from other organization enough that using a generic groups such as `admins`, `finance`, and `developers` is too generic. Note that this hospital may not be an exact replica of a real hospital.
 
@@ -22,164 +22,62 @@ This lab use a hospital as a base to set AWS IAM permission to demonstrate that 
 + Security
 + Compliance / audit
 
-### Design decision
-
-Real hospitals handle unidentified patients and duplicate-record merging according to their own jurisdiction, staffing, and information systems. A Nova Scotia Health policy demonstrates the use of assigned identities and medical-record numbers for unidentified patients, while the U.S. Indian Health Service recommends separating record verification from merge execution between two users.
-
-These sources are used as practical references, not as universal requirements. Because Hexterika Hospital is a fictional small hospital with approximately 10 workers, this lab assigns duplicate-record responsibilities to existing authorized roles instead of creating a dedicated Health Information Management department. The selected workflow still separates reporting, approval, and technical execution so that one person does not control the entire merge process.
-
-Sources: [Nova Scotia Health Patient Identification Policy](https://policy.nshealth.ca/Site_Published/IWK/document_render.aspx?documentRender.GenericField=&documentRender.Id=110343&documentRender.IdType=6) and [U.S. Indian Health Service Patient Merge Policy](https://www.ihs.gov/ehr/ftpfiles/?download=1&flname=17_2_IHS_PatientMergePolicy.pdf&p=ehr%5CTraining%5CManuals%5CEHR+MU+for+HIM+Training_May+2013%5CTAB-17+-+Patient+Merge%5C17_2_IHS_PatientMergePolicy.pdf).
-
-### Important distinctions
-
-#### Administrative profile
-
-Internal patient ID
-Name and known aliases
-Date of birth
-Address
-Telephone number
-Emergency contact
-Nationality or citizenship information
-Passport or national ID information
-Identified/unidentified status
-
-#### Clinical record
-
-Diagnoses
-Medical history
-Doctors’ notes
-Nursing observations and treatments
-Laboratory results
-Radiology results
-Prescriptions and medication administration
-
-Registration staff can access the first category, not the second. This follows the minimum-necessary principle: workforce access should be based on the information needed to perform the person’s job. (HHS guidance)
-
-#### Unidentified-patient workflow
-
-1. Registration staff search for a possible existing record.
-2. If identity cannot be established, they create an unidentified patient profile.
-3. The system assigns an immutable internal patient ID.
-4. Clinical staff document treatment against that record.
-5. Registration staff later add verified demographic and identity information.
-6. If no previous profile exists, the same record continues as the permanent identified record.
-7. If a previous profile exists, registration staff flag the records as a possible duplicate.
-8. Registration staff cannot merge them.
-9. Authorized HIM staff verify the match, and a different authorized HIM worker executes the merge.
-10. Retention rule for this lab
-
-Patient-registration staff have no deletion permission. Hexterika Hospital retains patient records under a separate retention policy, including records of deceased patients. The proposed “10+ years” should remain a fictional internal assumption until the lab selects a jurisdiction, because real retention periods vary by record type and governing law.
-
 ## My IAM Setup
 
 ### hexterika-patient-registration
 
-hexterika-patient-registration grants authorized non-clinical staff access to create patient profiles and view or modify patient identity, demographic, and contact information. The group may create temporary profiles for unidentified patients and report suspected duplicate records. It cannot access clinical information, change internal patient identifiers, delete records, verify duplicates, or merge patient records.
+This group allows patient-registration staff to create patient profiles and maintain identity, demographic, and contact information. It may also create profiles for unidentified patients and report suspected duplicates.
 
-#### Permitted actions
+Allowed:
 
-| Action | Scope and restrictions |
-| --- | --- |
-| Search for an existing patient | Search identity and demographic information before creating another record. |
-| View administrative information | View patient name, date of birth, contact information, address, recorded identity documents, and internal patient ID. |
-| Create an identified patient profile | Create a record when sufficient identity information is available. |
-| Create an unidentified patient profile | Create an emergency record using an assigned placeholder identity when the patient cannot be identified. Real hospital policies use assigned naming formats and medical-record numbers for this situation. (Nova Scotia Health policy) |
-| Update demographic information | Correct or update names, addresses, telephone numbers, emergency contacts, and similar non-clinical information. |
-| Add identity evidence | Add a subsequently obtained passport number, citizenship ID, or other approved identity evidence. |
-| Identify an unknown patient | Replace placeholder demographic information after the patient’s identity has been adequately verified. |
-| Report possible duplicates | Flag two records that may represent the same person and send them to authorized HIM staff. |
-| Read the internal patient ID | Use the hospital-generated identifier to locate and distinguish records. |
++ Search administrative patient information.
++ Create identified or unidentified patient profiles.
++ Update identity, demographic, and contact information.
++ Report suspected duplicate profiles.
 
-Patient registration being responsible for creating records and maintaining accurate patient details reflects actual medical-reception and registration work. (NHS receptionist example)
+Not allowed:
 
-#### Prohibited actions
++ Access or modify clinical information.
++ Change internal patient IDs.
++ Delete patient profiles.
++ Approve or execute record merges.
 
-| Action | Reason |
-| --- | --- |
-| Change the internal patient ID | The hospital-generated identifier remains the stable reference for the record. |
-| Delete a patient profile | Retention and eventual disposal are records-management functions, not registration duties. |
-| Merge duplicate records | A false merge could combine two people’s clinical histories and may be irreversible. |
-| Approve their own suspected duplicate | The HIM verification process must remain independent. |
-| View diagnoses | Not required for patient registration. |
-| View doctors’ clinical notes | Outside the group’s administrative purpose. |
-| View nursing treatment records | Outside the group’s administrative purpose. |
-| View laboratory results | Outside the group’s administrative purpose. |
-| View prescriptions or medication records | Outside the group’s administrative purpose. |
-| Create or modify clinical information | Reserved for the relevant clinical groups. |
-| Change record-retention status | Reserved for authorized records-management or compliance staff. |
-| Declare a patient deceased | This is a clinical determination, although registration staff might later update permitted administrative fields based on an authorized record. |
-| Use fingerprints or dental records to make an independent clinical identity determination | They may flag or submit the evidence, but specialized verification belongs to authorized HIM or clinical personnel. |
+### hexterika-record-merge-verifiers
 
-### hexterika-him-verifiers
+This group allows selected hospital staff to investigate suspected duplicate patient profiles and approve or reject a proposed merge.
 
-Full name: Hexterika Hospital Health Information Management Record Verifiers
+Allowed:
 
-hexterika-him-verifiers grants selected hospital personnel permission to investigate suspected duplicate patient profiles and approve or reject proposed record merges. Members of this group verify that the profiles represent the same person and specify which internal patient record must remain as the surviving record. They cannot execute merges.
++ Compare identity information and limited record metadata.
++ Approve or reject a proposed merge.
++ Specify which patient record must survive.
 
-#### Permitted actions HIM Verifier
+Not allowed:
 
-| Action | Scope and restrictions |
-| --- | --- |
-| View suspected duplicate profiles | View the administrative identity information of profiles submitted for duplicate review. |
-| Compare internal patient IDs | Compare the immutable hospital-generated identifiers belonging to the suspected duplicate profiles. |
-| Review identity evidence | Compare names, aliases, dates of birth, addresses, contact information, national IDs, passport information, and other approved identity evidence. |
-| View limited record metadata | Confirm that clinical records exist and compare relevant encounter dates or record history without modifying or unnecessarily reading clinical contents. |
-| Request additional verification | Return an inconclusive case to registration staff or request assistance from authorized clinical personnel when identity cannot be safely confirmed. |
-| Reject a proposed merge | Reject the request when the available evidence is insufficient, contradictory, or indicates that the profiles represent different people. |
-| Approve a proposed merge | Record approval when sufficient evidence shows that the profiles represent the same patient. |
-| Select the surviving record | Identify which internal patient record must remain active and which duplicate must be merged into it. |
-| Submit an approved merge request | Send the approved record pair and merge direction to an authorized HIM merger operator. |
++ Execute the merge.
++ Modify administrative or clinical information.
++ Delete patient records.
 
-Prohibited actions
-Action	Reason
-Execute a record merge	Verification and execution must be performed by different authorized people.
-Approve and execute the same merge	This would remove the two-person control.
-Modify clinical information	Diagnoses, treatments, results, and prescriptions remain controlled by the relevant clinical groups.
-Independently correct patient demographics	Corrections belong to patient-registration staff unless they form part of an authorized merge outcome.
-Change an internal patient ID	Internal patient IDs are immutable system identifiers.
-Delete a patient record	Record deletion is outside the duplicate-verification function.
-Approve a merge without sufficient evidence	An incorrect merge could combine the clinical histories of different people.
-Alter audit records	Verification decisions and related activity must remain traceable.
+### hexterika-record-merge-operators
 
-hexterika-him-mergers
+This group allows selected hospital staff to execute a record merge that has already been approved by an authorized verifier.
 
-Full name: Hexterika Hospital Health Information Management Record Merger Operators
+Allowed:
 
-hexterika-him-mergers grants selected hospital personnel permission to execute a duplicate-record merge that has already been verified and approved by an authorized HIM verifier. Members of this group cannot independently approve a merge or change the approved merge direction.
++ View the approved merge request.
++ Execute the exact approved merge.
++ Record the result for auditing.
 
-Permitted actions
-Action	Scope and restrictions
-View approved merge requests	View the approval, the two internal patient IDs, the selected surviving record, and the identity of the verifier.
-Validate the merge request	Confirm that the request is complete, approved, and refers to the exact records selected by the verifier.
-Return an invalid request	Reject or return a request that is incomplete, inconsistent, expired, or not approved by an authorized verifier.
-Execute an approved merge	Merge the specified duplicate record into the specified surviving record.
-Preserve the surviving internal patient ID	Ensure that the approved surviving record retains its original immutable internal patient ID.
-Preserve record history	Ensure that the merge retains the required history and traceability of the former duplicate record.
-Record the merge result	Produce an auditable record showing who executed the merge, when it occurred, which records were involved, and which record survived.
-Prohibited actions
-Action	Reason
-Create or approve a merge request	Approval belongs to the separate HIM verifier group.
-Execute an unapproved merge	Every merge requires prior approval from an authorized verifier.
-Change the approved record pair	The operator may only merge the records named in the approval.
-Reverse the approved merge direction	The verifier determines which record survives.
-Substitute another surviving record	This would execute a different action from the one that was reviewed.
-Modify patient demographics or clinical contents	The operator’s permission is limited to executing the approved merge.
-Delete an unrelated patient record	Merge authority does not provide general record-deletion authority.
-Alter or remove audit records	Merge activity must remain traceable.
-Separation-of-duties rule
+Not allowed:
 
-A person must not simultaneously belong to both hexterika-him-verifiers and hexterika-him-mergers. Registration staff may report suspected duplicates but cannot approve or execute merges.
++ Approve a merge.
++ Change the approved records or merge direction.
++ Modify patient information independently.
++ Delete unrelated records.
 
-The workflow requires two different authorized people:
+### Separation of duties
 
-A patient-registration worker reports a suspected duplicate.
-An HIM verifier investigates the records and either rejects or approves the merge.
-The verifier specifies the surviving record and submits the approved request.
-A different HIM merger operator validates the approval and executes the specified merge.
-The verification and execution activities are retained in the audit history.
-
-This two-user structure is based on Indian Health Service guidance recommending that one user perform identification and verification while another user performs the actual merge because the merge may be irreversible. IHS Patient Merge Policy
+A person must not belong to both merge groups. Patient registration reports the duplicate, a verifier approves the merge, and a different operator executes it.
 
 ### hexterika-doctors
 
@@ -229,10 +127,186 @@ In this labs, all the databases will be set to its simplest form that can be wri
 
 This is a fictional hospital that I set the IAM permission based on the idea above. This does not mean a real world hospital will follow this exact pattern but it shows my understanding that each organization has their own unique structure and requirements.
 
+# Fictional Hospital
+
+## Lab Overview
+
+### Objective
+
+Explain that this lab demonstrates organization-specific IAM design for a small fictional hospital instead of relying on generic groups such as administrators, developers, and finance.
+
+### Scope
+
++ Approximately 10 fictional hospital workers
++ Simplified patient-record-record storage
++ Focused on AWS IAM users, groups, and policies
++ Minimal supporting AWS resources
++ Not a complete hospital application
++ Not a claim of healthcare-regulation compliance
+
+## Hospital Access Requirements
+
+This section explains the hospital sufficiently to make IAM decisions. It must not become a complete operating model.
+
+### Simplified Patient-Record Areas
+
++ Administrative patient information
++ Doctors’ records
++ Nursing records
++ Pharmacy records
++ Laboratory records
++ Radiology records
++ Record-merge requests and approvals
+
+### Hospital Roles
+
+| Role | Required access |
+| --- | --- |
+| Patient registration | Create and maintain administrative patient information |
+| Doctors | Read relevant patient information and maintain doctors’ clinical records |
+| Nurses | Read authorized clinical instructions and maintain nursing-treatment records |
+| Pharmacists | Read prescriptions and maintain medication-dispensing records |
+| Laboratory staff | Read laboratory orders and maintain laboratory results |
+| Radiology staff | Read imaging orders and maintain radiology results |
+| IT | Maintain AWS infrastructure without routine access to patient-record contents |
+| Security | Monitor AWS security without modifying patient records |
+| External access | Receive temporary, engagement-specific access for administration, assessment, or audit |
+
+### Record-Merge Design Decision
+
+Keep the existing short design-decision text referencing Nova Scotia Health and the U.S. Indian Health Service here.
+
+Do not include the long unidentified-patient workflow, complete HIM department structure, or detailed medical-record procedures.
+
+## AWS Resource Model
+
+This section identifies the minimum AWS resources used to make the IAM policies real.
+
+### Amazon S3
+
+One S3 bucket represents the hospital’s simplified record storage.
+
+```text
+hexterika-hospital-records/
+├── administrative/
+├── doctors/
+├── nursing/
+├── pharmacy/
+├── laboratory/
+├── radiology/
+├── merge-requests/
+└── merge-approvals/
+```
+
+### Additional AWS Resources
+
+Add resources here only when a group requires them.
+
+Examples may include:
+
+AWS Lambda for a controlled application-level operation
+AWS CloudTrail for activity records
+AWS Config or Security Hub for security review
+AWS KMS for encryption management
+
+---
+
+## IAM Setup
+
+This section contains only deployable IAM groups and their real AWS permissions.
+
+### hexterika-patient-registration
+
+Briefly describe the group in one or two sentences.
+
+| Hospital task | Actual AWS IAM permission | Business justification |
+| --- | --- | --- |
+
+### hexterika-doctors
+
+Briefly describe the group in one or two sentences.
+
+| Hospital task | Actual AWS IAM permission | Business justification |
+| --- | --- | --- |
+
+### hexterika-nurses
+
+Briefly describe the group in one or two sentences.
+
+| Hospital task | Actual AWS IAM permission | Business justification |
+| --- | --- | --- |
+
+### hexterika-pharmacists
+
+Briefly describe the group in one or two sentences.
+
+| Hospital task | Actual AWS IAM permission | Business justification |
+| --- | --- | --- |
+
+### hexterika-laboratory
+
+Briefly describe the group in one or two sentences.
+
+| Hospital task | Actual AWS IAM permission | Business justification |
+| --- | --- | --- |
+
+### hexterika-radiology
+
+Briefly describe the group in one or two sentences.
+
+| Hospital task | Actual AWS IAM permission | Business justification |
+| --- | --- | --- |
+
+### hexterika-it
+
+Briefly describe the group in one or two sentences.
+
+| Hospital task | Actual AWS IAM permission | Business justification |
+| --- | --- | --- |
+
+### hexterika-security
+
+Briefly describe the group in one or two sentences.
+
+| Hospital task | Actual AWS IAM permission | Business justification |
+| --- | --- | --- |
+
+### Temporary External-Access Groups
+
+Add separate groups or roles here according to engagement type. Do not combine AWS administration, auditing, vulnerability assessment, and penetration testing into one permission set.
+
+### IAM Users and Group Membership
+
+| IAM user | Fictional position | IAM group or groups |
+| --- | --- | --- |
+
+## Implementation and Testing
+
+### Implementation Steps
+
+Record the relevant resources, groups, policies, and users created in AWS.
+
+### Permission Tests
+
+| Test user | Attempted action | Expected result | Actual result |
+| --- | --- | --- | --- |
+
+### Screenshots
+
+Attach implementation and permission-test screenshots here.
+
+## Limitations
+
+Explain that S3 and any additional services are simplified technical representations. Hospital-specific operations may normally be enforced by an application, while this lab focuses on the AWS permissions used to access supporting resources.
+
 ## Disclaimer
 
 This is a fictional AWS IAM lab designed to demonstrate identity and access management concepts such as least privilege, role-based access control, and separation of duties in a healthcare-inspired environment. While some security and privacy concepts are inspired by HIPAA, this lab is not intended to implement, demonstrate, or claim HIPAA compliance. The organizational structure, resources, permissions, workflows, and data used in this lab are simplified and fictional for educational purposes.
 
-## Note To Self
+## Sources
 
-Setup the IAM groups, assign the permissions, and add the IAM users. Then, take screenshots. Remove this section once the screenshots are fully attached.
+Real hospitals handle unidentified patients and duplicate-record merging according to their own jurisdiction, staffing, and information systems. A Nova Scotia Health policy demonstrates the use of assigned identities and medical-record numbers for unidentified patients, while the U.S. Indian Health Service recommends separating record verification from merge execution between two users.
+
+These sources are used as practical references, not as universal requirements. Because Hexterika Hospital is a fictional small hospital with approximately 10 workers, this lab assigns duplicate-record responsibilities to existing authorized roles instead of creating a dedicated Health Information Management department. The selected workflow still separates reporting, approval, and technical execution so that one person does not control the entire merge process.
+
+Sources: [Nova Scotia Health Patient Identification Policy](https://policy.nshealth.ca/Site_Published/IWK/document_render.aspx?documentRender.GenericField=&documentRender.Id=110343&documentRender.IdType=6) and [U.S. Indian Health Service Patient Merge Policy](https://www.ihs.gov/ehr/ftpfiles/?download=1&flname=17_2_IHS_PatientMergePolicy.pdf&p=ehr%5CTraining%5CManuals%5CEHR+MU+for+HIM+Training_May+2013%5CTAB-17+-+Patient+Merge%5C17_2_IHS_PatientMergePolicy.pdf).
