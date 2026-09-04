@@ -22,6 +22,14 @@ This lab use a hospital as a base to set AWS IAM permission to demonstrate that 
 + Security
 + Compliance / audit
 
+### Design decision
+
+Real hospitals handle unidentified patients and duplicate-record merging according to their own jurisdiction, staffing, and information systems. A Nova Scotia Health policy demonstrates the use of assigned identities and medical-record numbers for unidentified patients, while the U.S. Indian Health Service recommends separating record verification from merge execution between two users.
+
+These sources are used as practical references, not as universal requirements. Because Hexterika Hospital is a fictional small hospital with approximately 10 workers, this lab assigns duplicate-record responsibilities to existing authorized roles instead of creating a dedicated Health Information Management department. The selected workflow still separates reporting, approval, and technical execution so that one person does not control the entire merge process.
+
+Sources: [Nova Scotia Health Patient Identification Policy](https://policy.nshealth.ca/Site_Published/IWK/document_render.aspx?documentRender.GenericField=&documentRender.Id=110343&documentRender.IdType=6) and [U.S. Indian Health Service Patient Merge Policy](https://www.ihs.gov/ehr/ftpfiles/?download=1&flname=17_2_IHS_PatientMergePolicy.pdf&p=ehr%5CTraining%5CManuals%5CEHR+MU+for+HIM+Training_May+2013%5CTAB-17+-+Patient+Merge%5C17_2_IHS_PatientMergePolicy.pdf).
+
 ### Important distinctions
 
 #### Administrative profile
