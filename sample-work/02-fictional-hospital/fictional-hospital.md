@@ -92,6 +92,12 @@ This group allows patient-registration staff to create patient profiles and main
 
 | Hospital task | Actual AWS IAM permission | Business justification |
 | --- | --- | --- |
+| Create a patient profile | - | Create a patient profile to keep patient's treatment record data organized |
+| Read administrative record of a patient profile | - | Read a patient administrative information such as identity, demographic, and contact information |
+| Write a patient profile | - | Write and modify patient administrative information such as update their contact information and identity |
+| Create a profile for an unindentify patient | - | In case an unidentify patient shows up, an unidentified patient profile can be created to keep the record of the treatment and to be merged later. I think this is the same as creating a patient profile but the identity requirement is not required at the moment and it can be updated later. This should simplify the type of record to be only 1 type and allow the merge to help with the duplicated. |
+| No reading permission to a patient's clinical data | - | The patient registeration role can create a patient profile and read the administrative data but not the clinical data. This means she can read and modify only some part of the patient profile so it may or may not be necessary to have a no read permission to block the read and write access to some part of a patient profile. |
+| Can flag a duplicate patient profile to review and merge but no merge permission | - | Can look at the file and flag it for duplicate but not merge. The merging process needs to be reviewed by a person with permission to authorize the merge. |
 
 ### hexterika-doctors
 
@@ -99,6 +105,8 @@ This grants access to the doctors to add their diagnostic to each patient in the
 
 | Hospital task | Actual AWS IAM permission | Business justification |
 | --- | --- | --- |
+| Can read all the clinical data of the patient profile but not the administrative part | - | A doctor can read all the clinical data record of a patient profile but not the administrative part because a doctor's task is to heal people. They are not responsible to work on the administrative part as well as to prevent doctor-patient bias from the administrative profile. |
+| Can write to a patient's doctor's treatment part of the patient's clinical profile | - | A doctor can read all the clinical data of the patient but can only write to their specific doctor's diagonosis section. This support the separation of duties because a doctor and a pharmacist specialized in different area. This helps ensure that the patient's get high standard treatment. |
 
 ### hexterika-nurses
 
@@ -106,6 +114,8 @@ This grants access to the nurses to record that they treat X to patient Y at tim
 
 | Hospital task | Actual AWS IAM permission | Business justification |
 | --- | --- | --- |
+| Can read all the clinical data of the patient profile but not the administrative part | - | A nurse can read all the clinical data record of a patient profile but not the administrative part because a nurse's task is to give the patient their treatment according to the doctor or giving the patient their medication according to the pharmacist. They are not responsible to work on the administrative part as well as to prevent nurse-patient bias. |
+| Can write to the nurse part of the clinical data of a patient profile | - | This record the nurse's work as an evidence of their work such as when they check up on the patient, what medication or treatment they give to the patient, is it the correct treatment according to the doctor and the pharmacist. If the nurse does everything correctly, it can retrace the step to check if the pharmacist or the doctor screw up. This benefits all of the clinical professional so all of them have their records of work so they can re-trace the mistakes if it happens and hopefully it can be fixed in time. |
 
 ### hexterika-pharmacists
 
@@ -113,6 +123,8 @@ This grants access to the pharmacists to record their prescription stocks, read 
 
 | Hospital task | Actual AWS IAM permission | Business justification |
 | --- | --- | --- |
+| Can read all the clinical data of the patient profile but not the administrative part | - | A pharmacist can read all the clinical data record of a patient profile but not the administrative part because a pharmacist's task is to assign the suitable medication to the patient according to the doctor's diagnosis and assign the correct medication to the nurse so the nurse can deliver them to the patient correctly. They are not responsible to work on the administrative part to prevent pharmacist-patient bias from the administrative profile's data. |
+| Can write to the pharmacist part of the patient clinical data profile | - | This allows a pharmacist to decide the suitable medication to the patient according to the doctor's diagnosis, or to check if the medication assign by the doctor is suitable to the patient, to see if the patient has any medication allergy so they can assign the suitable medication, and to give the correct drug to the nurse so the nurse can deliver it to the patient for an in-hospital patient and to give it to the correct patient directly for an out-patient at the counter |
 
 ### hexterika-laboratory
 
@@ -120,6 +132,8 @@ This grants the permission to the people who works at the lab so they can write 
 
 | Hospital task | Actual AWS IAM permission | Business justification |
 | --- | --- | --- |
+| Can read the patient's clinical data's doctor's diagnosis part | - | This is so they can perform the correct lab test from the patient's samples such as urine, blood, etc. This role has no need to gain administrative data read access of the patient profile. |
+| Can write to a patient's clinical data's lab result part | - | This allows the lab data to be recorded to the patient |
 
 ### hexterika-radiology
 
@@ -127,6 +141,8 @@ Briefly describe the group in one or two sentences.
 
 | Hospital task | Actual AWS IAM permission | Business justification |
 | --- | --- | --- |
+| Can read the patient's clinical data's doctor's diagnosis part | - | This is so they can perform the correct radiology test from the patient such as performing a left foot X-ray for a patient who fell of a horse to confirm a broken foot. This role has no need to gain administrative data read access of the patient profile. |
+| Can write to a patient's clinical data's radiology result part | - | This allows the radiology data to be recorded to the patient profile such as an X-ray result |
 
 ### hexterika-it
 
