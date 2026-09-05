@@ -153,7 +153,7 @@ Briefly describe the group in one or two sentences.
 
 ### hexterika-security
 
-Briefly describe the group in one or two sentences.
+Members of this group receive permissions to monitor and assess the hospital’s AWS security. Membership may include some or all internal IT personnel, depending on their assigned responsibilities, as well as authorized external security personnel. Membership in the IT group does not automatically grant membership in the security group.
 
 | Hospital task | Actual AWS IAM permission | Business justification |
 | --- | --- | --- |
