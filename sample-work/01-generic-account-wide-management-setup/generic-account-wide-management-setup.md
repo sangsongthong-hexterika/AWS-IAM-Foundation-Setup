@@ -139,13 +139,20 @@ The following tests verify the minimum account-wide configuration required befor
 
 ### Test 3 — Cost Monitoring
 
-**Test:** Verify that an AWS Budget and its email notifications are configured.
+**Test:** Verify that a monthly AWS cost budget and email notifications are configured.
 
-**Expected result:** The budget is active and sends notifications to the selected email address when its configured thresholds are reached.
+**Expected result:**
 
-**Result:** Budget existence confirmed. Notification configuration is pending verification.
+* A monthly cost budget is active.
+* The budget has defined alert thresholds.
+* At least one alert has an email recipient.
+* The budget and alerts are currently healthy and have not exceeded their thresholds.
 
-![gexter-boss cost monitoring dashboard](./images/aws-gexter-boss-cost-monitoring-dashboard.png)
+**Result:** Passed. A monthly cost budget of $25 is active and healthy. The budget includes actual and forecasted cost thresholds, and its 85% actual-cost alert is configured with two email recipients.
+
+![Monthly cost budget details](./images/aws-gexter-boss-monthly-cost-budget-details.png)
+
+![Budget email alert verification](./images/aws-gexter-boss-budget-email-alert-verification.png)
 
 ### Test 4 — Account Activity History
 
