@@ -139,16 +139,19 @@ The following tests verify the minimum account-wide configuration required befor
 
 ### Test 3 — Cost Monitoring
 
-**Test:** Verify that a monthly AWS cost budget and email notifications are configured.
+**Test:** Verify that an AWS Budget, email notifications, and Cost Anomaly Detection are configured.
 
 **Expected result:**
 
 * A monthly cost budget is active.
 * The budget has defined alert thresholds.
 * At least one alert has an email recipient.
-* The budget and alerts are currently healthy and have not exceeded their thresholds.
+* A Cost Anomaly Detection monitor is active.
+* The budget and anomaly monitor report a healthy status.
 
-**Result:** Passed. A monthly cost budget of $25 is active and healthy. The budget includes actual and forecasted cost thresholds, and its 85% actual-cost alert is configured with two email recipients.
+**Result:** Passed. A monthly cost budget of $25 is active and healthy. It includes actual and forecasted cost thresholds, with two email recipients configured for the 85% actual-cost alert. Cost Anomaly Detection also has one active monitor, with no anomalies detected at the time of verification.
+
+![Cost-monitoring dashboard](./images/aws-gexter-boss-cost-monitoring-dashboard.png)
 
 ![Monthly cost budget details](./images/aws-gexter-boss-monthly-cost-budget-details.png)
 
