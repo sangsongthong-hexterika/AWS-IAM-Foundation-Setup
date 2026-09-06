@@ -134,8 +134,8 @@ The following tests verify the minimum account-wide configuration required befor
 
 **Result:** Passed. `gexter-boss` has MFA-enabled console access, receives permissions through the two designated IAM groups, and currently has no programmatic access key.
 
-[gexter-boss IAM security recommendations](./images/aws-account-iam-security-recommendations.png)
-[gexter-boss IAM authentication-and-group-permissions](./images/aws-gexter-boss-authentication-and-group-permissions.png)
+![gexter-boss IAM security recommendations](./images/aws-account-iam-security-recommendations.png)
+![gexter-boss IAM authentication-and-group-permissions](./images/aws-gexter-boss-authentication-and-group-permissions.png)
 
 ### Test 3 — Cost Monitoring
 
