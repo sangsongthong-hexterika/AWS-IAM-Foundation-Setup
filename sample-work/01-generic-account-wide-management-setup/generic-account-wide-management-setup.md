@@ -132,9 +132,10 @@ The following tests verify the minimum account-wide configuration required befor
 * MFA is enabled.
 * No long-term access key exists unless one is specifically required for later CLI work.
 
-**Result:** Pending verification.
+**Result:** Passed. `gexter-boss` has MFA-enabled console access, receives permissions through the two designated IAM groups, and currently has no programmatic access key.
 
-<!-- Add authentication and credential screenshots here. -->
+[gexter-boss IAM security recommendations](./images/aws-account-iam-security-recommendations.png)
+[gexter-boss IAM authentication-and-group-permissions](./images/aws-gexter-boss-authentication-and-group-permissions.png)
 
 ### Test 3 — Cost Monitoring
 
