@@ -159,22 +159,22 @@ The following tests verify the minimum account-wide configuration required befor
 
 ### Test 4 — Account Activity History
 
-**Test:** Open AWS CloudTrail Event history and confirm that recent account-management events are recorded.
+**Test:** Open AWS CloudTrail Event history and filter the recorded management events by the username `gexter-boss`.
 
-**Expected result:** CloudTrail Event history displays recent management activity performed in the AWS account.
+**Expected result:** CloudTrail Event history displays recent account-management activity performed by `gexter-boss`.
 
-**Result:** Pending verification.
+**Result:** Passed. CloudTrail displayed more than 50 management events associated with `gexter-boss` within its 90-day Event history.
 
-<!-- Add the CloudTrail Event history screenshot here. -->
+![gexter-boss CloudTrail Event history](./images/aws-gexter-boss-cloudtrail-event-history.png)
 
 ### Verification Summary
 
-| Test                                          | Status             |
-| --------------------------------------------- | ------------------ |
-| Billing access                                | Passed             |
-| Administrative authentication and credentials | Pending            |
-| Cost monitoring and notifications             | Partially verified |
-| CloudTrail Event history                      | Pending            |
+| Test                                          | Status |
+| --------------------------------------------- | ------ |
+| Billing access                                | Passed |
+| Administrative authentication and credentials | Passed |
+| Cost monitoring and notifications             | Passed |
+| CloudTrail Event history                      | Passed |
 
 ---
 
