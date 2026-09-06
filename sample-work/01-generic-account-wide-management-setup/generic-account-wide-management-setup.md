@@ -106,6 +106,67 @@ The following controls will be evaluated and configured before building the orga
 
 The exact AWS services and settings will be selected during implementation. They are not treated as completed until they have been configured and verified in the AWS account.
 
+---
+
+## Account-Wide Verification
+
+The following tests verify the minimum account-wide configuration required before beginning the organization-specific labs. Advanced security-monitoring controls may be added later.
+
+### Test 1 — Billing Access
+
+**Test:** Sign in as `gexter-boss` and open the Billing and Cost Management Bills page.
+
+**Expected result:** The Bills page opens without an access-denied error.
+
+**Result:** Passed. `gexter-boss` can view the account’s billing information.
+
+![gexter-boss billing access verification](./images/aws-gexter-boss-bills-access-verification.png)
+
+### Test 2 — Administrative Authentication and Credentials
+
+**Test:** Verify the IAM groups, MFA device, and access-key status of `gexter-boss`.
+
+**Expected result:**
+
+* `gexter-boss` belongs to `hexterika-admins` and `hexterika-billing`.
+* MFA is enabled.
+* No long-term access key exists unless one is specifically required for later CLI work.
+
+**Result:** Pending verification.
+
+<!-- Add authentication and credential screenshots here. -->
+
+### Test 3 — Cost Monitoring
+
+**Test:** Verify that an AWS Budget and its email notifications are configured.
+
+**Expected result:** The budget is active and sends notifications to the selected email address when its configured thresholds are reached.
+
+**Result:** Budget existence confirmed. Notification configuration is pending verification.
+
+![gexter-boss cost monitoring dashboard](./images/aws-gexter-boss-cost-monitoring-dashboard.png)
+
+### Test 4 — Account Activity History
+
+**Test:** Open AWS CloudTrail Event history and confirm that recent account-management events are recorded.
+
+**Expected result:** CloudTrail Event history displays recent management activity performed in the AWS account.
+
+**Result:** Pending verification.
+
+<!-- Add the CloudTrail Event history screenshot here. -->
+
+### Verification Summary
+
+| Test                                          | Status             |
+| --------------------------------------------- | ------------------ |
+| Billing access                                | Passed             |
+| Administrative authentication and credentials | Pending            |
+| Cost monitoring and notifications             | Partially verified |
+| CloudTrail Event history                      | Pending            |
+
+---
+
 ## Sources
 
 AWS recommends reserving the root user for tasks that specifically require root credentials. Activating IAM access to the Billing and Cost Management console is one such root-user task.
