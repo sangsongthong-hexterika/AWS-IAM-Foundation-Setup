@@ -191,4 +191,3 @@ AWS recommends reserving the root user for tasks that specifically require root 
 
 * [AWS account root user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html)
 * [Setting up IAM access to Billing](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started-account-iam.html)
-* [Creating a CloudWatch billing alarm](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html)
