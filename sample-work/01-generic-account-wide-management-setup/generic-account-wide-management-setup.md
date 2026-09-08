@@ -99,7 +99,6 @@ The current account contains:
 The following controls will be evaluated and configured before building the organization-specific labs:
 
 * IAM access to Billing and Cost Management.
-* Cost monitoring and notifications.
 * Account-wide activity logging.
 * Security findings and monitoring.
 * Review of unused credentials and permissions.
@@ -159,9 +158,11 @@ The following tests verify the minimum account-wide configuration required befor
 
 ### Test 4 — Account Activity History
 
+CloudTrail Event history is enabled by default on every AWS account and retains 90 days of management events at no additional cost. It is checked here to confirm the account has a usable activity record for troubleshooting and investigation, and that administrative actions are attributed to a named IAM user rather than the root user. It records management events only; data-level events such as individual S3 object access are outside its scope.
+
 **Test:** Open AWS CloudTrail Event history and filter the recorded management events by the username `gexter-boss`.
 
-**Expected result:** CloudTrail Event history displays recent account-management activity performed by `gexter-boss`.
+**Expected result:** CloudTrail Event history displays recent account-management activity attributed to `gexter-boss`.
 
 **Result:** Passed. CloudTrail displayed more than 50 management events associated with `gexter-boss` within its 90-day Event history.
 
