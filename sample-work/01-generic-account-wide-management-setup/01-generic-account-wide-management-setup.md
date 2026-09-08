@@ -113,6 +113,8 @@ The following tests verify the minimum account-wide configuration required befor
 
 ### Test 1 — Billing Access
 
+AdministratorAccess does not by itself allow an IAM user to open the Billing and Cost Management pages. IAM access to billing is a separate account-level setting that only the root user can activate. This test confirms that the setting was activated and that billing administration can be carried out by gexter-boss rather than by signing in as root.
+
 **Test:** Sign in as `gexter-boss` and open the Billing and Cost Management Bills page.
 
 **Expected result:** The Bills page opens without an access-denied error.
@@ -123,20 +125,24 @@ The following tests verify the minimum account-wide configuration required befor
 
 ### Test 2 — Administrative Authentication and Credentials
 
+Permissions are attached to groups rather than directly to the user so that access is defined by administrative function and can be granted to an additional person without rebuilding it. This test also records the current access model: gexter-boss uses console sign-in with MFA and holds no access key, because no task so far has required programmatic access. Programmatic credentials will be created when CLI or infrastructure-as-code work begins, and the method will be selected at that point rather than provisioned in advance.
+
 **Test:** Verify the IAM groups, MFA device, and access-key status of `gexter-boss`.
 
 **Expected result:**
 
 * `gexter-boss` belongs to `hexterika-admins` and `hexterika-billing`.
-* MFA is enabled.
-* No long-term access key exists unless one is specifically required for later CLI work.
+* MFA is enabled on console sign-in.
+* No access key is present, matching the console-only access in use at this stage.
 
-**Result:** Passed. `gexter-boss` has MFA-enabled console access, receives permissions through the two designated IAM groups, and currently has no programmatic access key.
+**Result:** Passed. `gexter-boss` signs in to the console with MFA and receives all permissions through the two designated IAM groups. No access key is present, which matches the access model recorded above.
 
 ![gexter-boss IAM security recommendations](./images/aws-account-iam-security-recommendations.png)
 ![gexter-boss IAM authentication-and-group-permissions](./images/aws-gexter-boss-authentication-and-group-permissions.png)
 
 ### Test 3 — Cost Monitoring
+
+A budget and Cost Anomaly Detection cover different failure modes. The budget alerts when spend crosses a threshold that was set manually, so it depends on the threshold being correct. Cost Anomaly Detection compares spend against the account's established pattern and reports deviation from it, which surfaces unexpected usage — such as resources launched in an unused region — before a monthly threshold would be reached.
 
 **Test:** Verify that an AWS Budget, email notifications, and Cost Anomaly Detection are configured.
 
