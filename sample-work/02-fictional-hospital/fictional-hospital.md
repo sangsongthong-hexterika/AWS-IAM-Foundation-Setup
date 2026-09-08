@@ -99,6 +99,37 @@ This group allows patient-registration staff to create patient profiles and main
 | No reading permission to a patient's clinical data | - | The patient registeration role can create a patient profile and read the administrative data but not the clinical data. This means she can read and modify only some part of the patient profile so it may or may not be necessary to have a no read permission to block the read and write access to some part of a patient profile. |
 | Can flag a duplicate patient profile to review and merge but no merge permission | - | Can look at the file and flag it for duplicate but not merge. The merging process needs to be reviewed by a person with permission to authorize the merge. |
 
+### hexterika-duplicate-record-merge-operators
+
++ Contains only selected IT personnel.
++ Membership is additional to their normal IT group membership.
++ Not every IT worker receives merge authority.
++ Operators execute an already-approved merge through a controlled function.
++ They cannot approve their own merge requests.
++ They should not receive routine direct access to patient-record contents merely because they operate the merge.
+
+| Hospital task | Actual AWS IAM permission | Business justification |
+| --- | --- | --- |
+
+### hexterika-duplicate-record-verifiers
+
++ Contains selected hospital personnel trusted to verify and approve merges.
++ It is permission-based, not tied to a department or profession.
++ A doctor may handle ordinary cases.
++ Another suitable authorized person could handle exceptional cases involving legal, forensic, or administrative concerns.
++ Verifiers approve or reject; they do not execute the merge.
+
+One important distinction: the real hospital could choose the appropriate verifier case by case, but this AWS lab must demonstrate a concrete setup. We can assign one fictional doctor as the ordinary verifier while documenting that exceptional cases may require a different authorized verifier.
+
+The resulting control chain is:
+
+Patient registration reports → selected verifier approves → selected IT merge operator executes
+
+No individual should hold both verification and merge-operation permissions. This is a solid conclusion for the duplicate-record responsibility structure.
+
+| Hospital task | Actual AWS IAM permission | Business justification |
+| --- | --- | --- |
+
 ### hexterika-doctors
 
 This grants access to the doctors to add their diagnostic to each patient in the database. This is different from the nurses group because a nurse may allow to write down their check-up information but not diagnose the patient the same level as a doctor can do. This prevents the conflict of duties problem as well as safeguarding the patient that only a license medical doctor is allowed to write the diagnosis to a patient and not just anyone who works at the hospital can write everything on the patient.
