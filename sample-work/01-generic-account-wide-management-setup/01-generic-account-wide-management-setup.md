@@ -125,7 +125,7 @@ AdministratorAccess does not by itself allow an IAM user to open the Billing and
 
 ### Test 2 — Administrative Authentication and Credentials
 
-Permissions are attached to groups rather than directly to the user so that access is defined by administrative function and can be granted to an additional person without rebuilding it. This test also records the current access model: gexter-boss uses console sign-in with MFA and holds no access key, because no task so far has required programmatic access. Programmatic credentials will be created when CLI or infrastructure-as-code work begins, and the method will be selected at that point rather than provisioned in advance.
+Permissions are attached to groups rather than directly to the user so that access is defined by administrative function and can be granted to an additional person without rebuilding it. This test also records the current access model: `gexter-boss` uses console sign-in with MFA and holds no access key, because no task so far has required programmatic access. Programmatic credentials will be created when CLI or infrastructure-as-code work begins, and the method will be selected at that point rather than provisioned in advance.
 
 **Test:** Verify the IAM groups, MFA device, and access-key status of `gexter-boss`.
 
