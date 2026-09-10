@@ -175,12 +175,19 @@ Briefly describe the group in one or two sentences.
 | Can read the patient's clinical data's doctor's diagnosis part | - | This is so they can perform the correct radiology test from the patient such as performing a left foot X-ray for a patient who fell of a horse to confirm a broken foot. This role has no need to gain administrative data read access of the patient profile. |
 | Can write to a patient's clinical data's radiology result part | - | This allows the radiology data to be recorded to the patient profile such as an X-ray result |
 
-### hexterika-it
+### hexterika-hospital-it
 
 Briefly describe the group in one or two sentences.
 
 | Hospital task | Actual AWS IAM permission | Business justification |
 | --- | --- | --- |
+| Maintains assigned hospital AWS infrastructure. | | |
+| Does not automatically receive account-administrator authority. | | |
+| Cannot grant itself additional permissions or add itself to privileged groups. | | |
+| Does not routinely read or modify patient-record contents. | | |
+| Cannot approve record merges. | | |
+| Cannot execute merges unless separately placed in the merge-operator group. | | |
+| May use system-testing/ to upload, retrieve, and delete harmless test objects without touching patient records. | | |
 
 ### hexterika-security
 
