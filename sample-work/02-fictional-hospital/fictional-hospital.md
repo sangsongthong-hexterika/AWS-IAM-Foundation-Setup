@@ -189,9 +189,11 @@ Briefly describe the group in one or two sentences.
 | Cannot execute merges unless separately placed in the merge-operator group. | | |
 | May use system-testing/ to upload, retrieve, and delete harmless test objects without touching patient records. | | |
 
-### hexterika-security
+### hexterika-hospital-security
 
 Members of this group receive permissions to monitor and assess the hospital’s AWS security. Membership may include some or all internal IT personnel, depending on their assigned responsibilities, as well as authorized external security personnel. Membership in the IT group does not automatically grant membership in the security group.
+
+This group represents selected personnel responsible for hospital security review. The group receives no hospital-workload permissions in this walkthrough because the lab does not implement the monitoring, logging, findings-management, or incident-response resources required for meaningful security operations. Granting broad account-wide visibility or untestable placeholder permissions would conflict with least privilege. The empty group also demonstrates that an IAM group name does not itself provide access. Scoped read-only permissions may be added in a later walkthrough when the corresponding security resources are implemented and tested.
 
 | Hospital task | Actual AWS IAM permission | Business justification |
 | --- | --- | --- |
