@@ -259,10 +259,20 @@ External personnel are not eligible for `hexterika-duplicate-record-merge-operat
 
 | IAM user | Fictional position | IAM group or groups |
 | -------- | ------------------ | ------------------- |
+| `hospital-reg-thea-queen` | Patient registration officer | `hexterika-patient-registration` |
+| `hospital-dr-who-smith` | Attending doctor | `hexterika-doctors` |
+| `hospital-dr-jack-harkness` | Attending doctor, ordinary merge verifier | `hexterika-doctors`, `hexterika-duplicate-record-verifiers` |
+| `hospital-nurse-joy` | Ward nurse | `hexterika-nurses` |
+| `hospital-nurse-john-hart` | `Ward nurse` | `hexterika-nurses` |
+| `hospital-pharm-oliver-queen` | Pharmacist | `hexterika-pharmacists` |
+| `hospital-lab-prof-oak` | Laboratory technician | `hexterika-laboratory` |
+| `hospital-rad-chrollo` | Radiology technician | `hexterika-radiology` |
+| `hospital-it-felicity-smoak` | IT technician | `hexterika-hospital-it` |
+| `hospital-it-charlie-bradbury` | IT technician, merge operator | `hexterika-hospital-it`, `hexterika-duplicate-record-merge-operators` |
 
 Every user carries the `hospital-` prefix so the whole lab can be identified and deleted at the end without touching the account-wide identities.
 
-Two users demonstrate the merge chain. `hospital-dr-xeno` approves, `hospital-it-standley` executes, and neither holds the other's permission. `hospital-dr-who-smith` and `hospital-it-oak` exist to show that verification and merge authority are not granted by profession.
+Two users demonstrate the merge chain. `hospital-dr-jack-harkness` approves, h`ospital-it-charlie-bradbury` acts, and neither holds the other's permission. `hospital-dr-who-smith` and `hospital-it-felicity-smoak` exist to show that verification and merge authority are not granted by profession.
 
 ---
 
