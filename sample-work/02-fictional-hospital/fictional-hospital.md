@@ -272,7 +272,7 @@ External personnel are not eligible for `hexterika-duplicate-record-merge-operat
 
 Every user carries the `hospital-` prefix so the whole lab can be identified and deleted at the end without touching the account-wide identities.
 
-Two users demonstrate the merge chain. `hospital-dr-jack-harkness` approves, h`ospital-it-charlie-bradbury` acts, and neither holds the other's permission. `hospital-dr-who-smith` and `hospital-it-felicity-smoak` exist to show that verification and merge authority are not granted by profession.
+Two users demonstrate the merge chain. `hospital-dr-jack-harkness` approves, `hospital-it-charlie-bradbury` acts, and neither holds the other's permission. `hospital-dr-who-smith` and `hospital-it-felicity-smoak` exist to show that verification and merge authority are not granted by profession.
 
 ---
 
