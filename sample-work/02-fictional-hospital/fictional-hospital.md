@@ -185,8 +185,8 @@ This grants access to the doctors to add their diagnosis to each patient in the 
 
 | Hospital task | Actual AWS IAM permission | Business justification |
 | ------------- | ------------------------- | ---------------------- |
-| Can read all the clinical data of the patient profile but not the administrative part | - | A doctor can read all the clinical data of a patient profile but not the administrative part because a doctor's task is to heal people. They are not responsible for the administrative part, and this prevents doctor-patient bias from the administrative profile. |
-| Can write to a patient's doctor's treatment part of the patient's clinical profile | - | A doctor can read all the clinical data of the patient but can only write to their specific doctor's diagnosis section. This supports the separation of duties because a doctor and a pharmacist specialize in different areas. This helps ensure that patients get high-standard treatment. |
+| Can read all the clinical data of the patient profile but not the administrative part | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | A doctor can read all the clinical data of a patient profile but not the administrative part because a doctor's task is to heal people. They are not responsible for the administrative part, and this prevents doctor-patient bias from the administrative profile. |
+| Can write to a patient's doctor's treatment part of the patient's clinical profile | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | A doctor can read all the clinical data of the patient but can only write to their specific doctor's diagnosis section. This supports the separation of duties because a doctor and a pharmacist specialize in different areas. This helps ensure that patients get high-standard treatment. |
 
 ### hexterika-nurses
 
@@ -194,8 +194,8 @@ This grants access to the nurses to record that they treat X to patient Y at tim
 
 | Hospital task | Actual AWS IAM permission | Business justification |
 | ------------- | ------------------------- | ---------------------- |
-| Can read all the clinical data of the patient profile but not the administrative part | - | A nurse can read all the clinical data of a patient profile but not the administrative part because a nurse's task is to give the patient their treatment according to the doctor, or their medication according to the pharmacist. They are not responsible for the administrative part, and this prevents nurse-patient bias. |
-| Can write to the nurse part of the clinical data of a patient profile | - | This records the nurse's work as evidence: when they check on the patient, what medication or treatment they give, and whether it matches what the doctor and the pharmacist ordered. If the nurse does everything correctly, the steps can be retraced to check whether the pharmacist or the doctor made the error. This benefits all the clinical professionals, because each of them has their own record of work and mistakes can be retraced and hopefully fixed in time. |
+| Can read all the clinical data of the patient profile but not the administrative part | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | A nurse can read all the clinical data of a patient profile but not the administrative part because a nurse's task is to give the patient their treatment according to the doctor, or their medication according to the pharmacist. They are not responsible for the administrative part, and this prevents nurse-patient bias. |
+| Can write to the nurse part of the clinical data of a patient profile | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | This records the nurse's work as evidence: when they check on the patient, what medication or treatment they give, and whether it matches what the doctor and the pharmacist ordered. If the nurse does everything correctly, the steps can be retraced to check whether the pharmacist or the doctor made the error. This benefits all the clinical professionals, because each of them has their own record of work and mistakes can be retraced and hopefully fixed in time. |
 
 ### hexterika-pharmacists
 
@@ -203,8 +203,8 @@ This grants access to the pharmacists to record their prescription stocks, read 
 
 | Hospital task | Actual AWS IAM permission | Business justification |
 | ------------- | ------------------------- | ---------------------- |
-| Can read all the clinical data of the patient profile but not the administrative part | - | A pharmacist can read all the clinical data of a patient profile but not the administrative part because a pharmacist's task is to assign suitable medication according to the doctor's diagnosis and hand the correct medication to the nurse for delivery. They are not responsible for the administrative part, and this prevents pharmacist-patient bias from the administrative profile's data. |
-| Can write to the pharmacist part of the patient clinical data profile | - | This allows a pharmacist to decide the suitable medication according to the doctor's diagnosis, to check whether medication assigned by the doctor is suitable, to see whether the patient has any medication allergy, and to give the correct drug to the nurse for an in-hospital patient or directly to the correct patient at the counter for an out-patient. |
+| Can read all the clinical data of the patient profile but not the administrative part | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | A pharmacist can read all the clinical data of a patient profile but not the administrative part because a pharmacist's task is to assign suitable medication according to the doctor's diagnosis and hand the correct medication to the nurse for delivery. They are not responsible for the administrative part, and this prevents pharmacist-patient bias from the administrative profile's data. |
+| Can write to the pharmacist part of the patient clinical data profile | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | This allows a pharmacist to decide the suitable medication according to the doctor's diagnosis, to check whether medication assigned by the doctor is suitable, to see whether the patient has any medication allergy, and to give the correct drug to the nurse for an in-hospital patient or directly to the correct patient at the counter for an out-patient. |
 
 ### hexterika-laboratory
 
@@ -212,8 +212,8 @@ This grants permission to the people who work at the lab so they can write their
 
 | Hospital task | Actual AWS IAM permission | Business justification |
 | ------------- | ------------------------- | ---------------------- |
-| Can read the patient's clinical data's doctor's diagnosis part | - | This is so they can perform the correct lab test from the patient's samples such as urine, blood, and so on. This role has no need for administrative read access to the patient profile. |
-| Can write to a patient's clinical data's lab result part | - | This allows the lab data to be recorded to the patient |
+| Can read the patient's clinical data's doctor's diagnosis part | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | This is so they can perform the correct lab test from the patient's samples such as urine, blood, and so on. This role has no need for administrative read access to the patient profile. |
+| Can write to a patient's clinical data's lab result part | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | This allows the lab data to be recorded to the patient |
 
 ### hexterika-radiology
 
@@ -221,8 +221,8 @@ This grants permission to radiology staff to read the doctor's imaging order and
 
 | Hospital task | Actual AWS IAM permission | Business justification |
 | ------------- | ------------------------- | ---------------------- |
-| Can read the patient's clinical data's doctor's diagnosis part | - | This is so they can perform the correct radiology test, such as a left foot X-ray for a patient who fell off a horse, to confirm a broken foot. This role has no need for administrative read access to the patient profile. |
-| Can write to a patient's clinical data's radiology result part | - | This allows the radiology data to be recorded to the patient profile, such as an X-ray result |
+| Can read the patient's clinical data's doctor's diagnosis part | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | This is so they can perform the correct radiology test, such as a left foot X-ray for a patient who fell off a horse, to confirm a broken foot. This role has no need for administrative read access to the patient profile. |
+| Can write to a patient's clinical data's radiology result part | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | This allows the radiology data to be recorded to the patient profile, such as an X-ray result |
 
 ### hexterika-hospital-it
 
@@ -230,14 +230,14 @@ This group operates the hospital technology inside the AWS environment the hospi
 
 | Hospital task | Actual AWS IAM permission | Business justification |
 | ------------- | ------------------------- | ---------------------- |
-| Operate the hospital's record storage without reading record contents | - | IT keeps storage available, configured, and recoverable. None of that requires reading a diagnosis or a lab result. Granting record access to keep storage working would hand one technician a view of every patient in the hospital with no clinical reason attached to it. |
-| Use a separate testing area to verify configuration and access | - | IT needs somewhere to upload, retrieve, and delete objects to confirm that settings and permissions actually behave as intended. Doing that against live patient records risks damaging or exposing them, so `system-testing/` exists to make technical verification possible without touching real records. |
-| Cannot create AWS resources or add new services | - | The hospital is a tenant in an AWS account it does not own. Resource creation belongs to the account owner. This also keeps the hospital's resource count a deliberate decision rather than something that grows whenever a technician decides something would be handy. |
-| Cannot create, modify, or delete IAM users, groups, or policies | - | Identity administration belongs to the account owner. If IT could edit IAM, every separation of duties in this lab would be advisory only, because IT could write itself whatever permission it was missing. |
-| Cannot add itself or anyone else to a group | - | Stated separately from the policy restriction because it is the specific failure this lab is built to prevent. An IT member who can add themselves to the verifier group breaks the merge control chain without ever touching a policy document. |
+| Operate the hospital's record storage without reading record contents | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | IT keeps storage available, configured, and recoverable. None of that requires reading a diagnosis or a lab result. Granting record access to keep storage working would hand one technician a view of every patient in the hospital with no clinical reason attached to it. |
+| Use a separate testing area to verify configuration and access | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | IT needs somewhere to upload, retrieve, and delete objects to confirm that settings and permissions actually behave as intended. Doing that against live patient records risks damaging or exposing them, so `system-testing/` exists to make technical verification possible without touching real records. |
+| Cannot create AWS resources or add new services | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | The hospital is a tenant in an AWS account it does not own. Resource creation belongs to the account owner. This also keeps the hospital's resource count a deliberate decision rather than something that grows whenever a technician decides something would be handy. |
+| Cannot create, modify, or delete IAM users, groups, or policies | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | Identity administration belongs to the account owner. If IT could edit IAM, every separation of duties in this lab would be advisory only, because IT could write itself whatever permission it was missing. |
+| Cannot add itself or anyone else to a group | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | Stated separately from the policy restriction because it is the specific failure this lab is built to prevent. An IT member who can add themselves to the verifier group breaks the merge control chain without ever touching a policy document. |
 | Cannot approve a record merge | - | Approving a merge is a judgement about whether two records describe the same person. It needs the record contents IT deliberately does not have, and it needs clinical and administrative context IT does not hold. |
-| Supplies the merge operators, but merge authority is a separate group | - | Executing a merge is technical work, so operators come from IT. Not every IT worker gets it, so it lives in its own group rather than being attached to the IT group by default. |
-| Cannot view or change account-wide security, logging, or billing settings | - | These belong to the account owner under Walkthrough 01. A tenant does not configure logging, findings, or cost controls for an account it does not own. |
+| Supplies the merge operators, but merge authority is a separate group | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | Executing a merge is technical work, so operators come from IT. Not every IT worker gets it, so it lives in its own group rather than being attached to the IT group by default. |
+| Cannot view or change account-wide security, logging, or billing settings | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | These belong to the account owner under Walkthrough 01. A tenant does not configure logging, findings, or cost controls for an account it does not own. |
 
 ### Hospital Security
 
