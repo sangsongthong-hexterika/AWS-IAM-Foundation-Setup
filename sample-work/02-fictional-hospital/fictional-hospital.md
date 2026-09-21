@@ -47,17 +47,17 @@ This section explains the hospital sufficiently to make IAM decisions. It must n
 
 ### Hospital Roles
 
-|       Role           |                                     Required access                                    |
-| -------------------- | -------------------------------------------------------------------------------------- |
-| Patient registration | Create and maintain administrative patient information                                 |
-| Doctors              | Read relevant patient information and maintain doctors' clinical records               |
-| Nurses               | Read authorized clinical instructions and maintain nursing-treatment records           |
-| Pharmacists          | Read prescriptions and maintain medication-dispensing records                          |
-| Dentists             | Read patient's clinical data, write dental treatment record, and provide forensic identification of an unidentify corpse from dental records |
-| Laboratory staff     | Read laboratory orders and maintain laboratory results                                 |
-| Radiology staff      | Read imaging orders and maintain radiology results                                     |
-| IT                   | Operate hospital technology without routine access to patient-record contents          |
-| External access      | Receive temporary, engagement-specific access for administration, assessment, or audit |
+|       Role           |                                                        Required access                                                   |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Patient registration | Create and maintain administrative patient information                                                                   |
+| Doctors              | Read relevant patient information and maintain doctors' clinical records                                                 |
+| Nurses               | Read authorized clinical instructions and maintain nursing-treatment records                                             |
+| Pharmacists          | Read prescriptions and maintain medication-dispensing records                                                            |
+| Dentists             | Read patient's clinical data, write dental treatment record for forensics identification and patient's treatment records |
+| Laboratory staff     | Read laboratory orders and maintain laboratory results                                                                   |
+| Radiology staff      | Read imaging orders and maintain radiology results                                                                       |
+| IT                   | Operate hospital technology without routine access to patient-record contents                                            |
+| External access      | Receive temporary, engagement-specific access for administration, assessment, or audit                                   |
 
 ### Record-Merge Design Decision
 
