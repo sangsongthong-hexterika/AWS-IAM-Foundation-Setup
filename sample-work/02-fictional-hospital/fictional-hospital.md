@@ -39,6 +39,7 @@ This section explains the hospital sufficiently to make IAM decisions. It must n
 - Doctors' records
 - Nursing records
 - Pharmacy records
+- Dental records
 - Laboratory records
 - Radiology records
 - Record-merge requests and approvals
