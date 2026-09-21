@@ -290,6 +290,16 @@ Two users demonstrate the merge chain. `hospital-dr-jack-harkness` approves, `ho
 
 ---
 
+Screenshots From The Building Phase
+
+[aws-init-user-creation-no-control-access-grant.png](./images/aws-init-user-creation-no-control-access-grant.png)
+
+[aws-init-user-creation-step2.png](./images/aws-init-user-creation-step2.png)
+
+[aws-init-user-creation-step3.png](./images/aws-init-user-creation-step3.png)
+
+---
+
 ## Implementation and Testing
 
 ### Implementation Steps
