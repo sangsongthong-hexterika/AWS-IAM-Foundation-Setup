@@ -52,6 +52,7 @@ This section explains the hospital sufficiently to make IAM decisions. It must n
 | Doctors              | Read relevant patient information and maintain doctors' clinical records               |
 | Nurses               | Read authorized clinical instructions and maintain nursing-treatment records           |
 | Pharmacists          | Read prescriptions and maintain medication-dispensing records                          |
+| Dentists             | Read patient's clinical data, write dental treatment record, and provide forensic identification of an unidentify corpse from dental records |
 | Laboratory staff     | Read laboratory orders and maintain laboratory results                                 |
 | Radiology staff      | Read imaging orders and maintain radiology results                                     |
 | IT                   | Operate hospital technology without routine access to patient-record contents          |
@@ -209,12 +210,13 @@ This grants access to the pharmacists to record their prescription stocks, read 
 
 ### hexterika-dentists
 
-This grants permission to the dentists so they can write their records to the patient file. These people may be selected to verify the unidentify corspe by identifying dental record from a burnt corpse.
+This grants permission to dentists to read the patient's clinical data and write dental treatment to the patient file. Dental records also support forensic identification: when an unidentified body cannot be identified by other means, a dentist can compare its teeth against existing patients' dental records. The dentist records that comparison as a clinical finding. The decision to merge the records stays with the duplicate-record verifiers.
 
 | Hospital task | Actual AWS IAM permission | Business justification |
 | ------------- | ------------------------- | ---------------------- |
-| Can read the patient's clinical data | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | This is so they can treat people's anything oral care such as teeth and gum. They can use this dental record to identify a burnt or mutilated corpse from dental record when other methods of identifying a corpse cannot be performed or too troublesome to perform. |
-| Can write to a patient's clinical data's dental treatment part | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | This allows dental treatment to be recorded in a patient file. |
+| Can read the patient's clinical data | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | Dental treatment depends on medical history, such as medications that affect bleeding or healing, and allergies. The same read access lets a dentist compare an unidentified body's teeth against existing patients' dental records when the body is too damaged to identify by other means. |
+| Can write to a patient's clinical data's dental treatment part | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | This allows dental treatment to be recorded in the patient file, including a forensic comparison finding written to an unidentified patient's profile. |
+| Cannot approve a merge, including one based on their own dental finding | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | The verifier approves a merge by reviewing someone else's observation. A dentist who could also approve would be deciding on the strength of their own finding, which puts the evidence and the decision in one person's hands. |
 
 ### hexterika-laboratory
 
@@ -276,7 +278,7 @@ External personnel are not eligible for `hexterika-duplicate-record-merge-operat
 | `hospital-nurse-john-hart`     | Ward nurse                                | `hexterika-nurses`                                                    |
 | `hospital-pharm-oliver-queen`  | Pharmacist                                | `hexterika-pharmacists`                                               |
 | `hospital-lab-prof-oak`        | Laboratory technician                     | `hexterika-laboratory`                                                |
-| `hospital-rad-shelldon`        | Radiology technician                      | `hexterika-radiology`                                                 |
+| `hospital-rad-sheldon`         | Radiology technician                      | `hexterika-radiology`                                                 |
 | `hospital-it-felicity-smoak`   | IT technician                             | `hexterika-hospital-it`                                               |
 | `hospital-it-charlie-bradbury` | IT technician, merge operator             | `hexterika-hospital-it`, `hexterika-duplicate-record-merge-operators` |
 | `hospital-dentist-chrollo`     | Dentist                                   | `hexterika-dentists`                                                  |
