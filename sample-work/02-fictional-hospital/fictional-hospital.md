@@ -25,7 +25,7 @@ Walkthrough 01 defines the account-wide setup and `gexter-boss`, the account adm
 - Account-wide billing, IAM administration, activity logging, and security monitoring stay with `gexter-boss` and are never granted to a hospital group.
 - When this lab ends, all hospital resources, users, and groups are deleted. Only the account-wide setup survives.
 
-Group names are prefixed `hospital-` where the role name is generic enough to recur in another organization, such as IT and security. Role names specific to a hospital, such as doctors or pharmacists, are not prefixed.
+Group names are prefixed `hospital-` where the role name is generic enough to recur in another organization, such as IT. Role names specific to a hospital, such as doctors or pharmacists, are not prefixed.
 
 ---
 
