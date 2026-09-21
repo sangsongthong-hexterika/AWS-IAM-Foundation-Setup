@@ -77,6 +77,7 @@ hexterika-hospital-records/
 ├── doctors/
 ├── nursing/
 ├── pharmacy/
+├── dentists/
 ├── laboratory/
 ├── radiology/
 ├── merge-requests/
@@ -206,6 +207,15 @@ This grants access to the pharmacists to record their prescription stocks, read 
 | Can read all the clinical data of the patient profile but not the administrative part | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | A pharmacist can read all the clinical data of a patient profile but not the administrative part because a pharmacist's task is to assign suitable medication according to the doctor's diagnosis and hand the correct medication to the nurse for delivery. They are not responsible for the administrative part, and this prevents pharmacist-patient bias from the administrative profile's data. |
 | Can write to the pharmacist part of the patient clinical data profile | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | This allows a pharmacist to decide the suitable medication according to the doctor's diagnosis, to check whether medication assigned by the doctor is suitable, to see whether the patient has any medication allergy, and to give the correct drug to the nurse for an in-hospital patient or directly to the correct patient at the counter for an out-patient. |
 
+### hexterika-dentists
+
+This grants permission to the dentists so they can write their records to the patient file. These people may be selected to verify the unidentify corspe by identifying dental record from a burnt corpse.
+
+| Hospital task | Actual AWS IAM permission | Business justification |
+| ------------- | ------------------------- | ---------------------- |
+| Can read the patient's clinical data | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | This is so they can treat people's anything oral care such as teeth and gum. They can use this dental record to identify a burnt or mutilated corpse from dental record when other methods of identifying a corpse cannot be performed or too troublesome to perform. |
+| Can write to a patient's clinical data's dental treatment part | `{"Version": "2012-10-17", "Statement": [ { "Sid": "", "Effect": "", "Action": "", "Resource": "" } ] }` | This allows dental treatment to be recorded in a patient file. |
+
 ### hexterika-laboratory
 
 This grants permission to the people who work at the lab so they can write their records to the patient file. An example is a lab technician writing a blood test result, urine test result, hormone test result, and so on.
@@ -266,9 +276,10 @@ External personnel are not eligible for `hexterika-duplicate-record-merge-operat
 | `hospital-nurse-john-hart`     | Ward nurse                                | `hexterika-nurses`                                                    |
 | `hospital-pharm-oliver-queen`  | Pharmacist                                | `hexterika-pharmacists`                                               |
 | `hospital-lab-prof-oak`        | Laboratory technician                     | `hexterika-laboratory`                                                |
-| `hospital-rad-chrollo`         | Radiology technician                      | `hexterika-radiology`                                                 |
+| `hospital-rad-shelldon`        | Radiology technician                      | `hexterika-radiology`                                                 |
 | `hospital-it-felicity-smoak`   | IT technician                             | `hexterika-hospital-it`                                               |
 | `hospital-it-charlie-bradbury` | IT technician, merge operator             | `hexterika-hospital-it`, `hexterika-duplicate-record-merge-operators` |
+| `hospital-dentist-chrollo`     | Dentist                                   | `hexterika-dentists`                                                  |
 
 Every user carries the `hospital-` prefix so the whole lab can be identified and deleted at the end without touching the account-wide identities.
 
