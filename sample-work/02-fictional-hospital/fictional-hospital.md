@@ -292,6 +292,12 @@ Two users demonstrate the merge chain. `hospital-dr-jack-harkness` approves, `ho
 
 Screenshots From The Building Phase
 
+![aws-iam-users-groups-hospital-lab.png](./images/aws-iam-users-groups-hospital-lab.png)
+
+![aws-iam-users-hospital-lab.png](./images/aws-iam-users-hospital-lab.png)
+
+The below had wrong names so they will be deleted later but the context was right.
+
 ![aws-init-user-creation-no-control-access-grant.png](./images/aws-init-user-creation-no-control-access-grant.png)
 
 ![aws-init-user-creation-step2.png](./images/aws-init-user-creation-step2.png)
