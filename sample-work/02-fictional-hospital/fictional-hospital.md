@@ -304,6 +304,10 @@ The below had wrong names so they will be deleted later but the context was righ
 
 ![aws-init-user-creation-step3.png](./images/aws-init-user-creation-step3.png)
 
+This is my s3 with folders names.
+
+![s3-hospital-lab-folders.png](./images/s3-hospital-lab-folders.png)
+
 ---
 
 ## Implementation and Testing
