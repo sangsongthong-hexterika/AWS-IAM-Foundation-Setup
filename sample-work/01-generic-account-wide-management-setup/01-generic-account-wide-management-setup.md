@@ -50,8 +50,8 @@ Permissions are assigned to `gexter-boss` through IAM user groups instead of bei
 
 | IAM group | Attached AWS-managed policy | Purpose |
 | --- | --- | --- |
-| `hexterika-admins` | `AdministratorAccess` | Provides the account administrator with permission to create and manage AWS identities, policies, services, and lab resources. |
-| `hexterika-billing` | `Billing` | Explicitly assigns responsibility for billing, budgets, payment methods, and cost management. |
+| `hexterika-cyberlab-admins` | `AdministratorAccess` | Provides the account administrator with permission to create and manage AWS identities, policies, services, and lab resources. |
+| `hexterika-cyberlab-aws-billing` | `Billing` | Explicitly assigns responsibility for billing, budgets, payment methods, and cost management. |
 
 `gexter-boss` is currently the only member of both groups.
 
@@ -74,8 +74,8 @@ CLI and infrastructure-as-code access will be addressed separately when those me
 | --- | --- | --- |
 | Protect root credentials | Root user | Root password, MFA, and account-recovery controls |
 | Activate IAM access to Billing | Root user | Root-only account setting |
-| Perform routine AWS administration | `gexter-boss` | Membership in `hexterika-admins` |
-| Manage billing and cost controls | `gexter-boss` | Membership in `hexterika-billing` |
+| Perform routine AWS administration | `gexter-boss` | Membership in `hexterika-cyberlab-admins` |
+| Manage billing and cost controls | `gexter-boss` | Membership in `hexterika-cyberlab-aws-billing` |
 | Modify account-wide security monitoring | `gexter-boss` | Administrative access to the selected monitoring services |
 | Create lab identities and resources | `gexter-boss` | `AdministratorAccess` |
 | Use lab resources | Lab-specific identities | Permissions defined by each lab |
