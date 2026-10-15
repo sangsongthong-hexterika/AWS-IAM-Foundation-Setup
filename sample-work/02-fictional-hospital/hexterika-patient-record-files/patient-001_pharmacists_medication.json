@@ -1,0 +1,14 @@
+
+{
+  "patient_id": "patient-001",
+  "record_type": "medication",
+  "department": "pharmacists",
+  "pharmacist_id": "pharmacist-001",
+  "dispensing_date": "2026-10-14",
+  "medication_name": "Paracetamol",
+  "strength": "500 mg",
+  "quantity_dispensed": 10,
+  "prescription_status": "verified",
+  "dispensing_status": "completed",
+  "record_status": "finalized"
+}

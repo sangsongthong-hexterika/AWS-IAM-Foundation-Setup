@@ -1,0 +1,14 @@
+
+{
+  "patient_id": "patient-001",
+  "record_type": "nursing_observation",
+  "department": "nurses",
+  "nurse_id": "nurse-001",
+  "observation_date": "2026-10-14",
+  "temperature_celsius": 36.8,
+  "heart_rate_bpm": 78,
+  "blood_pressure": "118/76",
+  "patient_condition": "Alert and stable",
+  "notes": "Patient reports mild headache and fatigue",
+  "record_status": "finalized"
+}

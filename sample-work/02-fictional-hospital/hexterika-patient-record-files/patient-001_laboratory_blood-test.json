@@ -1,0 +1,14 @@
+
+{
+  "patient_id": "patient-001",
+  "record_type": "blood_test",
+  "department": "laboratory",
+  "laboratory_staff_id": "lab-001",
+  "test_date": "2026-10-14",
+  "test_name": "Complete Blood Count",
+  "hemoglobin_g_dl": 13.8,
+  "white_blood_cell_count_per_ul": 7200,
+  "platelet_count_per_ul": 250000,
+  "result_status": "completed",
+  "record_status": "finalized"
+}

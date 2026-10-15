@@ -1,0 +1,8 @@
+{
+  "patient_id": "patient-001",
+  "first_name": "Alex",
+  "last_name": "Morgan",
+  "date_of_birth": "1995-04-12",
+  "phone": "555-0101",
+  "registration_status": "active"
+}

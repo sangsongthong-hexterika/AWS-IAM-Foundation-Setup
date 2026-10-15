@@ -1,0 +1,13 @@
+
+{
+  "patient_id": "patient-001",
+  "record_type": "xray_report",
+  "department": "radiology",
+  "radiologist_id": "radiologist-001",
+  "examination_date": "2026-10-14",
+  "imaging_type": "Chest X-ray",
+  "clinical_indication": "Routine examination",
+  "findings": "No acute abnormalities identified",
+  "impression": "No acute cardiopulmonary findings",
+  "record_status": "finalized"
+}

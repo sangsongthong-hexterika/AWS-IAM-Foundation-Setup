@@ -1,0 +1,13 @@
+
+{
+  "patient_id": "patient-001",
+  "record_type": "dental_examination",
+  "department": "dentists",
+  "dentist_id": "dentist-001",
+  "examination_date": "2026-10-14",
+  "chief_complaint": "Routine dental checkup",
+  "examination_findings": "No visible cavities",
+  "treatment_required": false,
+  "recommendation": "Continue routine dental hygiene",
+  "record_status": "finalized"
+}

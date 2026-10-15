@@ -1,0 +1,11 @@
+{
+  "patient_id": "patient-001",
+  "record_type": "diagnosis",
+  "department": "doctors",
+  "doctor_id": "doctor-001",
+  "visit_date": "2026-10-14",
+  "chief_complaint": "Mild headache and fatigue",
+  "diagnosis": "Tension-type headache",
+  "treatment_plan": "Rest, hydration, and follow-up if symptoms persist",
+  "record_status": "finalized"
+}
