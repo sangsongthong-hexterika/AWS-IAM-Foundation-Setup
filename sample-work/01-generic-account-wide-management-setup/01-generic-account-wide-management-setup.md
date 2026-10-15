@@ -89,7 +89,7 @@ The current account contains:
 * One IAM user: `gexter-boss`.
 * Two IAM user groups: `hexterika-cyberlab-admins` and `hexterika-cyberlab-aws-billing`.
 * `AdministratorAccess` attached to `hexterika-cyberlab-admins`.
-* `Billing` attached to `hexterika-cyberlab-billing`.
+* `Billing` attached to `hexterika-cyberlab-aws-billing`.
 * `gexter-boss` assigned to both groups.
 * MFA enabled for both the root user and `gexter-boss`.
 * No customer-managed IAM policies at this stage.
