@@ -138,7 +138,7 @@ Permissions are attached to groups rather than directly to the user so that acce
 **Result:** Passed. `gexter-boss` signs in to the console with MFA and receives all permissions through the two designated IAM groups. No access key is present, which matches the access model recorded above.
 
 ![gexter-boss IAM security recommendations](./images/aws-account-iam-security-recommendations.png)
-![gexter-boss IAM authentication-and-group-permissions](./images/aws-gexter-boss-authentication-and-group-permissions.png)
+![gexter-boss IAM authentication-and-group-permissions](./images/aws-gexter-boss-permissions.png)
 
 ### Test 3 — Cost Monitoring
 
