@@ -87,12 +87,13 @@ A task assigned here should not automatically be granted to an organization-spec
 The current account contains:
 
 * One IAM user: `gexter-boss`.
-* Two IAM user groups: `hexterika-admins` and `hexterika-billing`.
-* `AdministratorAccess` attached to `hexterika-admins`.
-* `Billing` attached to `hexterika-billing`.
+* Two IAM user groups: `hexterika-cyberlab-admins` and `hexterika-cyberlab-aws-billing`.
+* `AdministratorAccess` attached to `hexterika-cyberlab-admins`.
+* `Billing` attached to `hexterika-cyberlab-billing`.
 * `gexter-boss` assigned to both groups.
 * MFA enabled for both the root user and `gexter-boss`.
 * No customer-managed IAM policies at this stage.
+* *Note that the names of the groups were changed from `hexterika-admins` and `hexterika-billing` to `hexterika-cyberlab-admins` and `hexterika-cyberlab-aws-billing`. I attached the `cyberlab` part to make a distinction that they are account-wide and not just another lab. I explicitly called it `aws-billing` to make sure that this is related to AWS account billing only and not future clients or any other billing. While I may or may not have other means to deal with non-AWS billing, explicitly say that this one is my AWS billing prevent me from future confusion later.*
 
 ## Planned Account-Wide Controls
 
@@ -131,7 +132,7 @@ Permissions are attached to groups rather than directly to the user so that acce
 
 **Expected result:**
 
-* `gexter-boss` belongs to `hexterika-admins` and `hexterika-billing`.
+* `gexter-boss` belongs to `hexterika-cyberlab-admins` and `hexterika-cyberlab-aws-billing`.
 * MFA is enabled on console sign-in.
 * No access key is present, matching the console-only access in use at this stage.
 
