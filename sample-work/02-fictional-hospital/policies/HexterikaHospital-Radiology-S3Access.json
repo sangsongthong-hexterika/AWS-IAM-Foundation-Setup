@@ -1,0 +1,42 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ListClinicalRecords",
+            "Effect": "Allow",
+            "Action": "s3:ListBucket",
+            "Resource": "arn:aws:s3:::hexterika-hospital-records",
+            "Condition": {
+                "StringLike": {
+                    "s3:prefix": [
+                        "doctors/*",
+                        "nurses/*",
+                        "pharmacists/*",
+                        "dentists/*",
+                        "laboratory/*",
+                        "radiology/*"
+                    ]
+                }
+            }
+        },
+        {
+            "Sid": "ReadClinicalRecords",
+            "Effect": "Allow",
+            "Action": "s3:GetObject",
+            "Resource": [
+                "arn:aws:s3:::hexterika-hospital-records/doctors/*",
+                "arn:aws:s3:::hexterika-hospital-records/nurses/*",
+                "arn:aws:s3:::hexterika-hospital-records/pharmacists/*",
+                "arn:aws:s3:::hexterika-hospital-records/dentists/*",
+                "arn:aws:s3:::hexterika-hospital-records/laboratory/*",
+                "arn:aws:s3:::hexterika-hospital-records/radiology/*"
+            ]
+        },
+        {
+            "Sid": "WriteRadiologyRecords",
+            "Effect": "Allow",
+            "Action": "s3:PutObject",
+            "Resource": "arn:aws:s3:::hexterika-hospital-records/radiology/*"
+        }
+    ]
+}
