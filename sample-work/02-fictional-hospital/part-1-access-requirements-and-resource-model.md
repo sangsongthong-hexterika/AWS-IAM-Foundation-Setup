@@ -88,9 +88,23 @@ The sample records are in [`hexterika-patient-record-files/`](./hexterika-patien
 
 #### Why department-first
 
-> **WRITE IN YOUR OWN WORDS:** Why are the keys organized department first (`doctors/patient-001_...`) instead of patient first (`patient-001/doctors/...`)? Think about how each choice looks in a policy `Resource` line and how easy it is to test.
->
-> Length: one or two short paragraphs.
+Hospital staff are the workers who will work on those patient files. In a hospital, staff's duties are organized by their departments. Patients are just data for the hospital staff to work with. This is why I set the IAM policy per department. The way S3 works, using the departments as the prefix for S3 makes it easier to write the policy in one line when linking each policy to the correct S3 resources.
+
+For example:
+
+Department-first policy:
+
+`doctors/*` the `*` refers to all the patient files stored under `doctors/`.
+
+Patient-first policy:
+
+`patient-001/doctors/...`
+
+When writing a policy, a `*` shows up both in front of the doctors department and after it, because the patient ID before the department and the file name after it both change.
+
+`*/doctors/*`
+
+This creates inconvenience when writing the policy.
 
 #### Patient identity and relationships
 
