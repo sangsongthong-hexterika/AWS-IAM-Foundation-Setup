@@ -108,9 +108,7 @@ This creates inconvenience when writing the policy.
 
 #### Patient identity and relationships
 
-> **REVIEW:** Check this matches your understanding of what S3 does and does not enforce.
-
-The shared patient identifier is a naming convention, not an enforced relationship. S3 does not link these objects, does not check that patient identifiers match, and does not require an administrative record to exist before a clinical record is created. A doctor with write access to `doctors/` can write a record for a patient ID that does not exist.
+The shared patient identifier is a naming convention, not an enforced relationship. S3 does not link these objects, does not check that patient identifiers match, and does not require an administrative record to exist before a clinical record is created. For example, S3 will store `doctors/patient-999_doctors_diagnosis.json` even if no `administrative/patient-999_administrative_registration.json` exists. S3 does not look at other objects before it stores a new one.
 
 In a real hospital system, an application or database manages patient identities, validates references between records, and enforces data-integrity rules. This lab does not include a relational database, a record-linking application, or automated referential-integrity checks. It is an AWS IAM and access-control lab, not an electronic health record application.
 
