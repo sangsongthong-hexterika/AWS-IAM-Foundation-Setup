@@ -114,15 +114,12 @@ The shared patient identifier is a naming convention, not an enforced relationsh
 
 In a real hospital system, an application or database manages patient identities, validates references between records, and enforces data-integrity rules. This lab does not include a relational database, a record-linking application, or automated referential-integrity checks. It is an AWS IAM and access-control lab, not an electronic health record application.
 
-### AWS Lambda (+1, Phase 2)
-
-One Lambda function will handle the outcome of a merge decision. It is part of the duplicate-record workflow and is not built in Phase 1. See [Part 4](./part-4-planned-phases.md).
-
 ### Resource Count
 
 | Resource | Required by | Running total | Status |
 | -------- | ----------- | ------------- | ------ |
 | S3 bucket | All record-handling groups | 1 | Built |
-| Lambda merge function | `hexterika-duplicate-record-merge-operators` | 2 | Planned (Phase 2) |
+
+Phase 1 needs no other AWS resource. Phase 2 covers duplicate-record handling and merging. Any resource it needs is decided in Phase 2, under the same rule: a resource is added only when a group duty cannot be expressed without it.
 
 Services not added: CloudTrail, Config, Security Hub, and KMS. Activity logging and security monitoring are account-wide and belong to `gexter-boss` under Walkthrough 01. Encryption management is not required by any hospital group duty.
