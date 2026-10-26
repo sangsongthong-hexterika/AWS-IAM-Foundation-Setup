@@ -92,9 +92,19 @@ Doctor Who Smith is able to write his diagnosis of patient Ash Ketchup. Nurse Jo
 
 ### Administrative access restrictions
 
-> **WRITE IN YOUR OWN WORDS:** Why can no clinical group reach `administrative/`, and why can patient registration reach nothing else? How do clinical staff still know which patient a record belongs to?
->
-> Length: one or two short paragraphs.
+The reason no clinical group can read a patient's administrative data is to protect the patient from bias and discrimination by clinical staff, and to protect the patient's sensitive information, such as their home address and government-issued ID number. It also prevents clinical staff from misusing the patient's information. For example, if the patient is a relative of the celebrity Damon and has Damon's number as an emergency contact, this prevents clinical staff who love or hate Damon from getting his number and harassing him, or from withholding treatment in exchange for meeting Damon.
+
+A patient registration staff member should not harass Damon through Ash Ketchup either. However, patient registration staff are not clinical staff, so they cannot withhold Ash Ketchup's treatment. If a patient registration staff member abuses the data and takes Damon's phone number without his consent to harass him, the forensic team or the police can investigate. Because clinical staff cannot read administrative records, they are ruled out, which narrows the search down to patient registration staff and the account administrator.
+
+Also, since patient registration staff cannot give clinical treatment, they should not be able to read Ash Ketchup's clinical data. This prevents them from reading or browsing Ash Ketchup's clinical data, such as an HIV test result, and using it to blackmail him. The point is that people who should not have access to something cannot access it. This also helps protect the patient.
+
+In a real hospital, all of those permissions can be handled by an application. However, in this lab, I use the patient ID in each file name. In a hospital database, every record is linked to the patient ID assigned to each patient. A patient's name is optional, so staff can create a file for an unconscious patient without having to wait until he is conscious. The files can then be checked and merged later in Phase 2, which handles duplicate records.
+
+In this lab, the patient ID is `patient-001`. Each record is stored as `[department]/patient-[3-digit ID]_[department]_[record name].json`.
+
+Ex. `laboratory/patient-001_laboratory_hiv-test-result.json`
+
+Clinical staff see the patient ID in the file name and inside the record, not the patient's name or contact details, so they know which patient a record belongs to without reading the administrative record.
 
 ### PutObject versus DeleteObject
 
