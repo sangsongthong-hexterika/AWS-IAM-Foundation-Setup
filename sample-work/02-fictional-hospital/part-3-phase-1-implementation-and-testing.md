@@ -179,8 +179,8 @@ P1-S02 — Policy attached to `hexterika-doctors`
 
 ![P1-S02.png](./images/P1-doctors/P1-S02.png)
 
-| Test ID | Action and purpose | Resource ARN | Expected | Actual result | Evidence |
-| ------- | ------------------ | ------------ | -------- | ------------- | -------- |
+| Test ID | Action and purpose | Resource ARN | Expected | Simulator result | Evidence |
+| ------- | ------------------ | ------------ | -------- | ---------------- | -------- |
 | P1-T01 | `s3:GetObject` — Doctors' record | `arn:aws:s3:::hexterika-hospital-records/doctors/patient-001_doctors_diagnosis.json` | Allow | Allowed — PASS | [P1-T01.png](./images/P1-doctors/P1-T01.png) |
 | P1-T02 | `s3:GetObject` — Nurses' record | `arn:aws:s3:::hexterika-hospital-records/nurses/patient-001_nurses_observation.json` | Allow | Allowed — PASS | [P1-T02.png](./images/P1-doctors/P1-T02.png) |
 | P1-T03 | `s3:GetObject` — Pharmacists' record | `arn:aws:s3:::hexterika-hospital-records/pharmacists/patient-001_pharmacists_medication.json` | Allow | Allowed — PASS | [P1-T03.png](./images/P1-doctors/P1-T03.png) |
@@ -208,8 +208,8 @@ P1-S04 — Policy attached to `hexterika-nurses`
 
 ![P1-S04.png](./images/P1-nurses/P1-S04.png)
 
-| Test ID | Action and purpose | Resource ARN | Expected | Actual result | Evidence |
-| ------- | ------------------ | ------------ | -------- | ------------- | -------- |
+| Test ID | Action and purpose | Resource ARN | Expected | Simulator result | Evidence |
+| ------- | ------------------ | ------------ | -------- | ---------------- | -------- |
 | P1-T14 | `s3:GetObject` — Doctors' record | `arn:aws:s3:::hexterika-hospital-records/doctors/patient-001_doctors_diagnosis.json` | Allow | Allowed — PASS | [P1-T14.png](./images/P1-nurses/P1-T14.png) |
 | P1-T15 | `s3:GetObject` — Nurses' record | `arn:aws:s3:::hexterika-hospital-records/nurses/patient-001_nurses_observation.json` | Allow | Allowed — PASS | [P1-T15.png](./images/P1-nurses/P1-T15.png) |
 | P1-T16 | `s3:GetObject` — Pharmacists' record | `arn:aws:s3:::hexterika-hospital-records/pharmacists/patient-001_pharmacists_medication.json` | Allow | Allowed — PASS | [P1-T16.png](./images/P1-nurses/P1-T16.png) |
@@ -237,8 +237,8 @@ P1-S06 — Policy attached to `hexterika-pharmacists`
 
 ![P1-S06.png](./images/P1-pharmacists/P1-S06.png)
 
-| Test ID | Action and purpose | Resource ARN | Expected | Actual result | Evidence |
-| ------- | ------------------ | ------------ | -------- | ------------- | -------- |
+| Test ID | Action and purpose | Resource ARN | Expected | Simulator result | Evidence |
+| ------- | ------------------ | ------------ | -------- | ---------------- | -------- |
 | P1-T27 | `s3:GetObject` — Read doctors record | `arn:aws:s3:::hexterika-hospital-records/doctors/*` | Allow | Allowed — PASS | [P1-T27.png](./images/P1-pharmacists/P1-T27.png) |
 | P1-T28 | `s3:GetObject` — Read nurses record | `arn:aws:s3:::hexterika-hospital-records/nurses/*` | Allow | Allowed — PASS | [P1-T28.png](./images/P1-pharmacists/P1-T28.png) |
 | P1-T29 | `s3:GetObject` — Read pharmacists record | `arn:aws:s3:::hexterika-hospital-records/pharmacists/*` | Allow | Allowed — PASS | [P1-T29.png](./images/P1-pharmacists/P1-T29.png) |
@@ -266,8 +266,8 @@ P1-S08 — Policy attached to `hexterika-dentists`
 
 ![P1-S08.png](./images/P1-dentists/P1-S08.png)
 
-| Test ID | Action and purpose | Resource ARN | Expected | Actual result | Evidence |
-| ------- | ------------------ | ------------ | -------- | ------------- | -------- |
+| Test ID | Action and purpose | Resource ARN | Expected | Simulator result | Evidence |
+| ------- | ------------------ | ------------ | -------- | ---------------- | -------- |
 | P1-T40 | `s3:GetObject` — Read doctors record | `arn:aws:s3:::hexterika-hospital-records/doctors/patient-001_doctors_diagnosis.json` | Allow | Allowed — PASS | [P1-T40.png](./images/P1-dentists/P1-T40.png) |
 | P1-T41 | `s3:GetObject` — Read nurses record | `arn:aws:s3:::hexterika-hospital-records/nurses/patient-001_nurses_observation.json` | Allow | Allowed — PASS | [P1-T41.png](./images/P1-dentists/P1-T41.png) |
 | P1-T42 | `s3:GetObject` — Read pharmacists record | `arn:aws:s3:::hexterika-hospital-records/pharmacists/patient-001_pharmacists_medication.json` | Allow | Allowed — PASS | [P1-T42.png](./images/P1-dentists/P1-T42.png) |
@@ -295,8 +295,8 @@ P1-S10 — Policy attached to `hexterika-laboratory`
 
 ![P1-S10.png](./images/P1-laboratory/P1-S10.png)
 
-| Test ID | Action and purpose | Resource ARN | Expected | Actual result | Evidence |
-| ------- | ------------------ | ------------ | -------- | ------------- | -------- |
+| Test ID | Action and purpose | Resource ARN | Expected | Simulator result | Evidence |
+| ------- | ------------------ | ------------ | -------- | ---------------- | -------- |
 | P1-T53 | `s3:GetObject` — Read doctors record | `arn:aws:s3:::hexterika-hospital-records/doctors/patient-001_doctors_diagnosis.json` | Allow | Allowed — PASS | [P1-T53.png](./images/P1-laboratory/P1-T53.png) |
 | P1-T54 | `s3:GetObject` — Read nurses record | `arn:aws:s3:::hexterika-hospital-records/nurses/patient-001_nurses_observation.json` | Allow | Allowed — PASS | [P1-T54.png](./images/P1-laboratory/P1-T54.png) |
 | P1-T55 | `s3:GetObject` — Read pharmacists record | `arn:aws:s3:::hexterika-hospital-records/pharmacists/patient-001_pharmacists_medication.json` | Allow | Allowed — PASS | [P1-T55.png](./images/P1-laboratory/P1-T55.png) |
@@ -324,8 +324,8 @@ P1-S12 — Policy attached to `hexterika-radiology`
 
 ![P1-S12.png](./images/P1-radiology/P1-S12.png)
 
-| Test ID | Action and purpose | Resource ARN | Expected | Actual result | Evidence |
-| ------- | ------------------ | ------------ | -------- | ------------- | -------- |
+| Test ID | Action and purpose | Resource ARN | Expected | Simulator result | Evidence |
+| ------- | ------------------ | ------------ | -------- | ---------------- | -------- |
 | P1-T66 | `s3:GetObject` — Read doctors record | `arn:aws:s3:::hexterika-hospital-records/doctors/patient-001_doctors_diagnosis.json` | Allow | Allowed — PASS | [P1-T66.png](./images/P1-radiology/P1-T66.png) |
 | P1-T67 | `s3:GetObject` — Read nurses record | `arn:aws:s3:::hexterika-hospital-records/nurses/patient-001_nurses_observation.json` | Allow | Allowed — PASS | [P1-T67.png](./images/P1-radiology/P1-T67.png) |
 | P1-T68 | `s3:GetObject` — Read pharmacists record | `arn:aws:s3:::hexterika-hospital-records/pharmacists/patient-001_pharmacists_medication.json` | Allow | Allowed — PASS | [P1-T68.png](./images/P1-radiology/P1-T68.png) |
@@ -353,8 +353,8 @@ P1-S14 — Policy attached to `hexterika-patient-registration`
 
 ![P1-S14.png](./images/P1-patient-registration/P1-S14.png)
 
-| Test ID | Action and purpose | Resource ARN | Expected | Actual result | Evidence |
-| ------- | ------------------ | ------------ | -------- | ------------- | -------- |
+| Test ID | Action and purpose | Resource ARN | Expected | Simulator result | Evidence |
+| ------- | ------------------ | ------------ | -------- | ---------------- | -------- |
 | P1-T79 | `s3:GetObject` — Read administrative record | `arn:aws:s3:::hexterika-hospital-records/administrative/patient-001_administrative_registration.json` | Allow | Allowed — PASS | [P1-T79.png](./images/P1-patient-registration/P1-T79.png) |
 | P1-T80 | `s3:GetObject` — Read doctors record | `arn:aws:s3:::hexterika-hospital-records/doctors/patient-001_doctors_diagnosis.json` | Deny | Denied — PASS | [P1-T80.png](./images/P1-patient-registration/P1-T80.png) |
 | P1-T81 | `s3:GetObject` — Read nurses record | `arn:aws:s3:::hexterika-hospital-records/nurses/patient-001_nurses_observation.json` | Deny | Denied — PASS | [P1-T81.png](./images/P1-patient-registration/P1-T81.png) |
