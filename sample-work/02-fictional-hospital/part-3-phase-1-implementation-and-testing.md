@@ -126,6 +126,8 @@ Prefixes help listing objects in a bucket make sense to humans. Without a condit
 
 Note that in my JSON policy file, the effect is set to `Allow`, which means the prefix patterns and resources are an allowed list, not a deny list.
 
+> **Note:** `doctors/*` is a pattern, not a prefix. The prefix in a list request is `doctors/`. In the policy, `doctors/*` is that prefix plus the wildcard `*`, which matches anything that comes after `doctors/`. Whether a matching request is allowed or denied depends on the effect of the policy statement, which here is `Allow`.
+
 If the prefix in the request does not match, the whole request is denied and nothing is listed. A request with no prefix at all would be denied the same way. For example, a request for the prefix `dinosaurs/` in a hospital bucket is denied. So is `doctor/`, because of the typo: the allowed pattern is `doctors/*`.
 
 ### Implicit versus explicit deny
