@@ -132,9 +132,17 @@ If the prefix in the request does not match, the whole request is denied and not
 
 ### Implicit versus explicit deny
 
-> **WRITE IN YOUR OWN WORDS:** In what order does AWS evaluate Allow, explicit Deny, and the default? Which kind of deny produced the 39 denied results? Why do the Phase 1 policies use no explicit Deny statements, and what would an explicit Deny on `administrative/*` do to the Phase 2 verifier access?
->
-> Length: two or three short paragraphs. The evaluation order can be a numbered list.
+AWS evaluates explicit Deny first, then Allow, and the default is implicit deny. To remember and understand the concepts, think of an explicit Deny as something dangerous, so it is clearly forbidden and leaves no room to interpret or wiggle. An Allow means you are allowed to do X. This protects the system from wide harm rather than encouraging freedom to do things. An implicit deny means that if something has not been clearly stated as allowed, assume it is denied unless there is an Allow for it. If there is a conflict between an Allow and an explicit Deny, the explicit Deny wins and the request is denied.
+
+In Phase 1 of this lab, the deny that produced the 39 denied results was the implicit deny. In Phase 1, the duties of each department are straightforward, with no overlap, so there is no reason to use an explicit Deny yet.
+
+An explicit Deny is strong, so it is only used to lock someone out of a permission, even if that person later gets another policy that allows something they should be strictly forbidden to access. In Phase 2, an explicit Deny on `administrative/*` would mean that even if an IAM user gains permission to access `administrative/*`, that IAM user or department group is still forbidden to access or read the object files in `administrative/*`, regardless of any Allow they gain later. This makes sure that the decision not to allow this group or IAM user to access something was made for a reason, and prevents problems that could arise later when multiple policies are attached. Think of it this way: an implicit deny means there is no reason to allow it yet, but it does not prevent that person from receiving an Allow in the future. An explicit Deny means the administrator has given it real thought and wants to make sure that a specific person or group cannot use an Allow they receive in the future. Ex. A group with an explicit Deny on `s3:PutObject` for `administrative/*` will not get write access there, even if another policy allows it later.
+
+In Phase 2, `hospital-dr-jack-harkness` is in two groups, doctors and verifiers, and the verifiers group will allow him to read `administrative/*` records. If the doctors policy has an explicit Deny on `administrative/*`, `hospital-dr-jack-harkness` will not be able to read any `administrative/*` record, regardless of whether he gains an Allow to read it from the verifiers group later.
+
+> **Note:** I answer this question about explicit Deny, Allow, and implicit deny using `hospital-dr-jack-harkness` as an example within Phase 1. Whatever I say here can change. In Phase 2, I may or may not put an explicit Deny into the doctors group. This detail can change until I finish working on Phase 2.
+
+It might feel tempting to put an explicit Deny everywhere as a precaution. However, an explicit Deny is strong, and it is redundant with implicit deny, which is already the default. Putting one in has to mean it is actually needed. That's when an explicit Deny should be used.
 
 ### Phase 1 resource model
 
