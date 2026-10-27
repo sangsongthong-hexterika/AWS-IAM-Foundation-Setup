@@ -8,7 +8,7 @@ This part records the hospital requirements and access rules for Phases 2 and 3.
 
 ### Record-Merge Decision
 
-Real hospitals handle unidentified patients and duplicate-record merging according to their jurisdiction, staffing, and information systems. Nova Scotia Health demonstrates the use of assigned identities and medical-record numbers for unidentified patients, while the U.S. Indian Health Service recommends separating record verification from merge execution between two users.
+Real hospitals handle unidentified patients and duplicate-record merging according to their jurisdiction, staffing, and information systems. A New York State model policy registers unidentified patients under placeholder names such as "Male Unidentified I" and has the records updated once the patient is identified, with the Medical Records department notified when multiple patient record numbers need to be merged. ASPR TRACIE describes hospitals giving each unidentified patient a unique placeholder name so the patients can be told apart and duplicate records are avoided. Keeping reporting, approval, and execution in separate hands follows the separation-of-duties control in NIST SP 800-53 (AC-5).
 
 These practices are references, not universal requirements. Because Hexterika Hospital is a fictional small hospital with approximately 10 workers, duplicate-record responsibilities are assigned to existing authorized roles instead of a dedicated Health Information Management department. Reporting, approval, and technical execution stay separated so that one person does not control the entire process.
 

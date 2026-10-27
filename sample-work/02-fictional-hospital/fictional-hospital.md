@@ -54,6 +54,6 @@ This is a fictional AWS IAM lab built to demonstrate identity and access managem
 
 ## Sources
 
-[Nova Scotia Health Patient Identification Policy](https://policy.nshealth.ca/Site_Published/IWK/document_render.aspx?documentRender.GenericField=&documentRender.Id=110343&documentRender.IdType=6)
-
-[U.S. Indian Health Service Patient Merge Policy](https://www.ihs.gov/ehr/ftpfiles/?download=1&flname=17_2_IHS_PatientMergePolicy.pdf&p=ehr%5CTraining%5CManuals%5CEHR+MU+for+HIM+Training_May+2013%5CTAB-17+-+Patient+Merge%5C17_2_IHS_PatientMergePolicy.pdf)
+- [Identification of Unidentified Patients — Model Policy (New York State, 2017)](https://health.ny.gov/professionals/hospital_administrator/letters/2017/docs/2017-01_id_of_unidentified_patients_model_policy.pdf)
+- [Naming Convention for Unidentified Patients (ASPR TRACIE, U.S. Department of Health and Human Services)](https://files.asprtracie.hhs.gov/documents/aspr-tracie-ta---naming-convention-for-unidentified-patients---6-6-18.pdf)
+- [NIST SP 800-53 Rev. 5 — Security and Privacy Controls for Information Systems and Organizations (AC-5 Separation of Duties)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf)
