@@ -27,7 +27,7 @@ This group allows patient-registration staff to create and maintain patient iden
 | Create a patient profile | Create a new patient registration record so clinical information can be associated with the correct patient identity. |
 | Read administrative records | Access patient identity, demographic, and contact information required for registration and duplicate detection. |
 | Update administrative records | Maintain patient identity, demographic, and contact information. |
-| Create an unidentified patient profile | Register an unidentified patient using a temporary identity. The same record structure is kept so identity information can be updated or reconciled later, and the duplicate-record workflow handles the merge. |
+| Create an unidentified patient profile | Register an unidentified patient with a new unique patient ID, such as `patient-002`, and a placeholder name such as John Doe or Jane Doe. Every other field is optional. There can be many John Does; the patient ID keeps each record unique, and the duplicate-record workflow in Phase 2 handles any merge later. |
 | No clinical-data access | Registration staff cannot read or modify patient clinical information. |
 
 Reporting suspected duplicates is part of the Phase 2 duplicate-record workflow.
@@ -70,8 +70,6 @@ This grants dentists permission to read the patient's clinical data and write de
 
 ### hexterika-laboratory
 
-> **REVIEW:** The earlier write-up said laboratory and radiology read only the doctor's order. The policy you built lets them read all six clinical prefixes, so the first row now describes the build. Decide which one you want.
-
 This grants laboratory staff permission to write their results to the patient's records, such as blood test, urine test, and hormone test results.
 
 | Hospital task | Business justification |
@@ -106,9 +104,7 @@ This grants radiology staff permission to read the doctor's imaging order and wr
 
 Every user carries the `hospital-` prefix so the whole lab can be identified and deleted at the end without touching the account-wide identities.
 
-All 10 hospital groups and all 11 hospital users are created. The group list below also shows `hexterika-admins` and `hexterika-billing`, which belong to the account-wide setup in Walkthrough 01. In Phase 1, only the seven department groups have a policy attached. `hexterika-duplicate-record-verifiers`, `hexterika-duplicate-record-merge-operators`, and `hexterika-hospital-it` exist with no permissions until Phases 2 and 3.
-
-> **REVIEW:** Check both paragraphs below against your setup.
+All 10 hospital groups and all 11 hospital users are created. The group list below was captured before the account-wide groups were renamed. It shows `hexterika-admins` and `hexterika-billing`, which are now `hexterika-cyberlab-admins` and `hexterika-cyberlab-aws-billing` (see [Walkthrough 01](../01-generic-account-wide-management-setup/01-generic-account-wide-management-setup.md)). In Phase 1, only the seven department groups have a policy attached. `hexterika-duplicate-record-verifiers`, `hexterika-duplicate-record-merge-operators`, and `hexterika-hospital-it` exist with no permissions until Phases 2 and 3.
 
 Hospital users have no console password and no access keys. They exist to hold group membership, and permissions are verified against the groups (see [Part 3](./part-3-phase-1-implementation-and-testing.md#test-method)).
 

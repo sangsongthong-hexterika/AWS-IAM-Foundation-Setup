@@ -6,8 +6,6 @@ Phase 1 covers department-level access to patient records: which hospital group 
 
 ## Implementation
 
-> **REVIEW:** Check the build steps match what you did, in the order you did them.
-
 1. Created the `hexterika-hospital-records` bucket with its 11 prefixes and uploaded one fictional record per department for `patient-001` (see [Part 1](./part-1-access-requirements-and-resource-model.md)).
 2. Created the 10 hospital groups and 11 hospital users, and assigned group membership (see [Part 2](./part-2-iam-groups-and-users.md)).
 3. Created seven customer-managed IAM policies, one per department, and attached each one to its department group.
@@ -16,8 +14,6 @@ Phase 1 covers department-level access to patient records: which hospital group 
 All resources, users, groups, and policies were created by `gexter-boss`.
 
 ### Policy Structure
-
-> **REVIEW:** Only the doctors JSON came from your Notion. The other six files in `policies/` were rebuilt from the same pattern and your test results; compare each with the JSON tab in the console, especially the `Sid` on the write statement.
 
 Every clinical department policy has the same three statements. Only the write prefix changes between departments.
 
@@ -386,17 +382,13 @@ Every simulated result matched its expected result.
 
 ## Phase 1 Limitations
 
-> **REVIEW:** Read each limitation and make sure you can explain it if asked.
-
 - Results are policy-authorization evidence from the Policy Simulator, not live S3 operations.
 - Access boundaries are department-level. Any member of a clinical group can read every patient's clinical records; there is no patient-level or care-relationship restriction.
 - `s3:PutObject` allows overwriting existing records. Bucket versioning keeps the previous content after an overwrite, but overwrites and version history were not tested in Phase 1.
-- A department can write a record under any patient identifier, including one with no administrative record, because S3 does not enforce relationships between objects.
+- S3 does not check patient IDs. For example, the doctors' group could save `doctors/patient-999_doctors_diagnosis.json` even if `patient-999` was never registered.
 - S3 is a simplified representation of hospital record storage. Hospital-specific rules would normally be enforced by an application.
 
 ## Phase 1 Conclusion
-
-> **REVIEW:** Recruiters read this first. Check it says what you would say about the lab.
 
 Phase 1 implemented department-level access control for a fictional hospital's patient records in one S3 bucket. Seven customer-managed IAM policies, one per department group, give each clinical department read access to all clinical records and write access to its own prefix only, give patient registration read and write access to administrative records only, and give no group delete access.
 
