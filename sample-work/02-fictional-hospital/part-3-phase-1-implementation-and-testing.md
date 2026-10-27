@@ -146,8 +146,6 @@ It might feel tempting to put an explicit Deny everywhere as a precaution. Howev
 
 ### Phase 1 resource model
 
-> **REVIEW:** Check this short summary still fits once you have written the department-first section in Part 1.
-
 The department-first prefixes and the reasons for them are in [Part 1](./part-1-access-requirements-and-resource-model.md#why-department-first). S3 does not enforce relationships between one patient's records. The access boundaries in Phase 1 are department-level: they control which department's records a group can reach, not which patient.
 
 ## Test Method
