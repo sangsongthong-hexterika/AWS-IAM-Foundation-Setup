@@ -120,9 +120,13 @@ In digital data handling, there is usually an industry-standard guideline or law
 
 ### ListBucket restrictions
 
-> **WRITE IN YOUR OWN WORDS:** Why do the object actions use object ARNs while `s3:ListBucket` uses the bucket ARN? What does the `s3:prefix` condition do, and what happens when a list request has no prefix or a prefix outside the allowed list?
->
-> Length: two or three short paragraphs. A small table comparing the two ARN formats is fine.
+Object actions act at the object level, which in this lab is the file level. Therefore, object actions use object ARNs. `s3:ListBucket` is a bucket-level action. A bucket is not an object. It is a container in `S3` that stores the objects (files). `s3:ListBucket` is the permission used to list the objects stored inside a bucket. There is no separate list permission at the object level: the API call is named `ListObjectsV2`, but the IAM permission that controls it is `s3:ListBucket`. This makes sense, since a bucket is like a box that contains object files, and you want the ability to see and list all the files (objects) inside the box (bucket). An S3 bucket treats everything inside it as objects, while Linux and humans think of them as directories (Linux) and folders in a box (humans). The bucket has no concept of a directory tree like Linux. It treats everything it stores as objects, and the only way to organize the objects so that searching and listing make sense is by using prefixes.
+
+Prefixes help listing objects in a bucket make sense to humans. Without a condition, `s3:ListBucket` allows listing all the objects stored inside that bucket. The prefix condition limits which prefixes a user may list in one policy, so users can only list what they are allowed to list. IAM checks the prefix in the list request against the allowed patterns in the condition. If it matches, S3 lists the files under that prefix. For example, the pattern `doctors/*` matches any prefix that starts with `doctors/`. The `*` is a wildcard, which means anything can follow `doctors/`, and the request is handled according to the effect of the policy, which in this case is `Allow`.
+
+Note that in my JSON policy file, the effect is set to `Allow`, which means the prefix patterns and resources are an allowed list, not a deny list.
+
+If the prefix in the request does not match, the whole request is denied and nothing is listed. A request with no prefix at all would be denied the same way. For example, a request for the prefix `dinosaurs/` in a hospital bucket is denied. So is `doctor/`, because of the typo: the allowed pattern is `doctors/*`.
 
 ### Implicit versus explicit deny
 
