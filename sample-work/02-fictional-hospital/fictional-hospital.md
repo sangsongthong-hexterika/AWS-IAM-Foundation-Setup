@@ -48,6 +48,18 @@ Supporting files:
 - [`hexterika-patient-record-files/`](./hexterika-patient-record-files/) — fictional sample patient records uploaded to the bucket
 - [`images/`](./images/) — build and test screenshots
 
+## Key Technical Explanations
+
+These sections explain the reasoning behind the Phase 1 permissions:
+
+- **[Why department-first](./part-1-access-requirements-and-resource-model.md#why-department-first):** why S3 keys start with the department, and how that keeps each department's access to one Resource line in its policy.
+- **[Cross-department read, own-department write](./part-3-phase-1-implementation-and-testing.md#cross-department-read-own-department-write):** why clinical groups can read every clinical department's records but write only to their own.
+- **[Administrative access restrictions](./part-3-phase-1-implementation-and-testing.md#administrative-access-restrictions):** why clinical groups cannot reach administrative records, and how staff still know which patient a record belongs to.
+- **[PutObject versus DeleteObject](./part-3-phase-1-implementation-and-testing.md#putobject-versus-deleteobject):** why writing is allowed and deleting is denied, and where versioning fits in.
+- **[ListBucket restrictions](./part-3-phase-1-implementation-and-testing.md#listbucket-restrictions):** bucket ARN versus object ARN, and how the `s3:prefix` condition allows or denies a list request.
+- **[Implicit versus explicit deny](./part-3-phase-1-implementation-and-testing.md#implicit-versus-explicit-deny):** the evaluation order, and why Phase 1 uses no explicit Deny.
+- **[Test Method](./part-3-phase-1-implementation-and-testing.md#test-method):** what the IAM Policy Simulator results show and what they do not.
+
 ## Disclaimer
 
 This is a fictional AWS IAM lab built to demonstrate identity and access management concepts such as least privilege, role-based access control, and separation of duties in a healthcare-inspired environment. While some security and privacy concepts are inspired by HIPAA, this lab is not intended to implement, demonstrate, or claim HIPAA compliance. The organizational structure, resources, permissions, workflows, and data used in this lab are simplified and fictional.
