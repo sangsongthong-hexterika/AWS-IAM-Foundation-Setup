@@ -7,6 +7,9 @@ This repository supports two parallel goals:
 
 Prospective clients can review the documentation structure associated with the service. Recruiters and technical reviewers can examine the sample work as evidence of the underlying technical capability.
 
+- **Reviewing technical work:** start with [Sample Work](#start-here-sample-work).
+- **Reviewing the service:** start with [Deliverable Templates](#deliverable-templates).
+
 ## Repository Structure
 
 ```text
@@ -16,10 +19,12 @@ AWS-IAM-Foundation-Setup/
 ├── deliverables/
 │   ├── aws-iam-foundation-configuration-report-template-ClientName.md
 │   └── aws-iam-foundation-handover-guide-template-ClientName.md
-└── sample-work/
-    └── 00-initial-account-setup/
-        ├── 00-initial-account-setup.md/
-        └── images/
+├── sample-work/
+│   ├── 00-initial-account-setup/
+│   ├── 01-generic-account-wide-management-setup/
+│   ├── 02-fictional-hospital/
+│   └── 03 to 06 (planned)
+└── archived/        (earlier drafts, not maintained)
 ```
 
 ## Start Here: Sample Work
@@ -28,9 +33,10 @@ The sample-work/ directory contains hands-on work completed in authorized AWS la
 
 The sample work documents technical implementation, security decisions, verification, and supporting evidence rather than presenting only finished templates.
 
-The current sample begins here:
-
-`00-initial-account-setup/00-initial-account-setup.md` — Documents the initial account-owner preparation completed before temporary administrator access is provided, including AWS account creation, root-account protection, and early security decisions.
+- **[00 — Initial AWS Account Setup](sample-work/00-initial-account-setup/00-initial-account-setup.md):** initial account-owner preparation completed before temporary administrator access is provided, including AWS account creation, root-account protection, and early security decisions.
+- **[01 — Generic Account-Wide Management Setup](sample-work/01-generic-account-wide-management-setup/01-generic-account-wide-management-setup.md):** an administrative IAM user kept separate from the root user, and account-wide cost and security monitoring shared by every lab.
+- **[02 — Fictional Hospital](sample-work/02-fictional-hospital/fictional-hospital.md):** department-based IAM groups and S3 access for a fictional hospital. Phase 1 is complete, with seven group policies verified by 90 IAM Policy Simulator tests.
+- **03 to 06:** planned: a fictional bank, research institute, space organization, and law firm.
 
 This directory is the primary starting point for recruiters and technical reviewers. Prospective clients may also review it to see the technical work supporting the service.
 
@@ -106,7 +112,7 @@ The public Markdown files show the reusable document structures. Completed clien
 
 The Hexterika Cyberlab website explains the client-facing AWS IAM Foundation Setup service. This repository provides the corresponding technical evidence, sample work, and deliverable structures.
 
-The repository is limited to material supporting the AWS IAM Foundation Setup service. Any broader AWS service or later service tier should be documented separately.
+The repository is limited to AWS IAM and access-control work: material supporting the AWS IAM Foundation Setup service, and sample work showing organization-specific access built on top of that foundation. Any broader AWS service or later service tier should be documented separately.
 
 ---
 
