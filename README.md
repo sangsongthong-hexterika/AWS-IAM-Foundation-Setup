@@ -20,7 +20,7 @@ The sample work documents technical implementation, security decisions, verifica
 
 - **[00 — Initial AWS Account Setup](sample-work/00-initial-account-setup/00-initial-account-setup.md):** initial account-owner preparation completed before temporary administrator access is provided, including AWS account creation, root-account protection, and early security decisions.
 - **[01 — Generic Account-Wide Management Setup](sample-work/01-generic-account-wide-management-setup/01-generic-account-wide-management-setup.md):** an administrative IAM user kept separate from the root user, and account-wide cost and security monitoring shared by every lab.
-- **[02 — Fictional Hospital](sample-work/02-fictional-hospital/fictional-hospital.md):** department-based IAM groups and S3 access for a fictional hospital. Phase 1 is complete, with seven group policies verified by 90 IAM Policy Simulator tests.
+- **[02 — Hospital Patient-Record Access Control](sample-work/02-fictional-hospital/fictional-hospital.md):** AWS IAM access control for a fictional hospital: each department reads what patient care needs, writes only its own records, and can't delete or see data outside its role. Verified with 90 IAM Policy Simulator tests.
 - **03 to 06:** planned: a fictional bank, research institute, space organization, and law firm.
 
 This directory is the primary starting point for recruiters and technical reviewers. Prospective clients may also review it to see the technical work supporting the service.
@@ -30,7 +30,7 @@ Additional sample work can be added as the AWS IAM foundation lab develops.
 ## Repository Structure
 
 ```text
-AWS-IAM-Foundation-Setup/
+AWS-IAM-Security/
 ├── README.md
 ├── LICENSE
 ├── deliverables/
