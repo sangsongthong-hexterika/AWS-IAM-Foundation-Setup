@@ -10,24 +10,9 @@ Prospective clients can review the documentation structure associated with the s
 - **Reviewing technical work:** start with [Sample Work](#start-here-sample-work).
 - **Reviewing the service:** start with [Deliverable Templates](#deliverable-templates).
 
-## Repository Structure
-
-```text
-AWS-IAM-Foundation-Setup/
-├── README.md
-├── LICENSE
-├── deliverables/
-│   ├── aws-iam-foundation-configuration-report-template-ClientName.md
-│   └── aws-iam-foundation-handover-guide-template-ClientName.md
-├── sample-work/
-│   ├── 00-initial-account-setup/
-│   ├── 01-generic-account-wide-management-setup/
-│   ├── 02-fictional-hospital/
-│   └── 03 to 06 (planned)
-└── archived/        (earlier drafts, not maintained)
-```
-
 ## Start Here: Sample Work
+
+Fastest look: [Phase 1 implementation and testing](sample-work/02-fictional-hospital/part-3-phase-1-implementation-and-testing.md), 90 IAM Policy Simulator tests across seven department policies.
 
 The sample-work/ directory contains hands-on work completed in authorized AWS lab environments.
 
@@ -41,6 +26,23 @@ The sample work documents technical implementation, security decisions, verifica
 This directory is the primary starting point for recruiters and technical reviewers. Prospective clients may also review it to see the technical work supporting the service.
 
 Additional sample work can be added as the AWS IAM foundation lab develops.
+
+## Repository Structure
+
+```text
+AWS-IAM-Security/
+├── README.md
+├── LICENSE
+├── deliverables/
+│   ├── aws-iam-foundation-configuration-report-template-ClientName.md
+│   └── aws-iam-foundation-handover-guide-template-ClientName.md
+├── sample-work/
+│   ├── 00-initial-account-setup/
+│   ├── 01-generic-account-wide-management-setup/
+│   ├── 02-fictional-hospital/
+│   └── 03 to 06 (planned)
+└── archived/        (earlier drafts, not maintained)
+```
 
 ## Deliverable Templates
 
