@@ -1,10 +1,25 @@
-# Walkthrough 02 — Fictional Hospital
+# Walkthrough 02 — Hospital Patient-Record Access Control
 
 ## Lab Overview
 
-### Objective
+### The Problem
 
-This lab uses a hospital as a base to set AWS IAM permissions and to demonstrate that a hospital is different enough from other organizations that generic groups such as `admins`, `finance`, and `developers` are too generic. This hospital is simplified and is not an exact replica of a real hospital.
+A hospital keeps patient records for seven staff groups in one place, and each group needs a different slice of them:
+
+- Clinical staff need to read every clinical department's records to treat a patient safely. A pharmacist checks the doctor's diagnosis and the patient's allergies; a dentist checks for medication that makes bleeding hard to stop.
+- Each department must write only its own records, so no one can overwrite another department's notes, and a mistake can be traced to the department that made it.
+- Clinical staff must not see administrative data such as home addresses, ID numbers and emergency contacts, and registration staff must not see clinical results.
+- No staff group should be able to delete a record.
+
+Generic groups such as `admins`, `finance` and `developers` can't express these rules, so staff end up with far more access than their job needs.
+
+### What I Built
+
+One S3 bucket organized by department, and seven IAM groups with one policy each. Clinical groups read all clinical records, write only their own department's, and can't delete. Patient registration reads and writes administrative records only.
+
+### Result
+
+90 IAM Policy Simulator tests, 51 expected allows and 39 expected denies. Every result matched. [Full test evidence](./part-3-phase-1-implementation-and-testing.md#permission-tests)
 
 ### Scope
 
