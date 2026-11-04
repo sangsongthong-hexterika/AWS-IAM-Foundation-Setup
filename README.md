@@ -30,7 +30,7 @@ Additional sample work can be added as the AWS IAM foundation lab develops.
 ## Repository Structure
 
 ```text
-AWS-IAM-Security/
+AWS-IAM-Foundation-Setup/
 ├── README.md
 ├── LICENSE
 ├── deliverables/
