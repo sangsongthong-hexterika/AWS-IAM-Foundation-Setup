@@ -1,5 +1,20 @@
 # Part 3 — Phase 1 Implementation and Testing
 
+---
+
+<!--
+Publication metadata is maintained for authorship verification
+and professional continuing-education documentation (CEU/CPE).
+-->
+
+**Author:** Sangsongthong Chantaranothai
+**Published:** 2026-10-30
+**Lab:** Walkthrough 02 — Hospital Patient-Record Access Control
+**Scope:** Phase 1 — Department-level IAM authorization
+**Article:** Part 3 — Phase 1 Implementation and Testing
+
+---
+
 [Back to lab overview](./fictional-hospital.md)
 
 Phase 1 covers department-level access to patient records: which hospital group can read, write, list, and delete which part of the `hexterika-hospital-records` bucket. The duplicate-record workflow and hospital IT operations are outside Phase 1.
@@ -365,6 +380,7 @@ P1-S14 — Policy attached to `hexterika-patient-registration`
 | P1-T88 | `s3:DeleteObject` — Delete administrative test record | `arn:aws:s3:::hexterika-hospital-records/administrative/p1-test-registration.json` | Deny | Denied — PASS | [P1-T88.png](./images/P1-patient-registration/P1-T88.png) |
 | P1-T89 | `s3:ListBucket` — List administrative prefix (request context `s3:prefix` = `administrative/*`) | `arn:aws:s3:::hexterika-hospital-records` | Allow | Allowed — PASS | [P1-T89.png](./images/P1-patient-registration/P1-T89.png) |
 | P1-T90 | `s3:ListBucket` — List doctors prefix (request context `s3:prefix` = `doctors/*`) | `arn:aws:s3:::hexterika-hospital-records` | Deny | Denied — PASS | [P1-T90.png](./images/P1-patient-registration/P1-T90.png) |
+
 ## Phase 1 Results
 
 | Group | Tests | Expected Allow | Expected Deny | PASS |
